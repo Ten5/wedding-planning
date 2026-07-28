@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="v1">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,28 @@
   <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-  <!-- Ambient Soft Floating Sunset & Botanical Leaf Orbs -->
+
+  <!-- Top Sticky Version Switcher Bar for Rini & Subhayu to Trial All 3 Themes -->
+  <div class="theme-switcher-bar" id="switcher-bar">
+    <div class="switcher-container">
+      <div class="switcher-title">
+        <span>🎨 <strong>Design Trial Mode</strong> (Switch version for Rini):</span>
+      </div>
+      <div class="switcher-options">
+        <button class="theme-tab-btn active" data-version="v1" id="tab-v1">
+          🌅 V1: Golden Hour &amp; Floral
+        </button>
+        <button class="theme-tab-btn" data-version="v2" id="tab-v2">
+          ✨ V2: Modern Minimalist Luxury
+        </button>
+        <button class="theme-tab-btn" data-version="v3" id="tab-v3">
+          🍷 V3: Romantic Sunset Feasts
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Soft Floating Orbs -->
   <div class="ambient-background" aria-hidden="true">
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
@@ -30,11 +51,11 @@
   <!-- Navigation Bar -->
   <nav class="navbar" id="main-nav">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo">Dodo &amp; Rini 🌸🌿</a>
+      <a href="#hero" class="nav-logo" id="nav-brand-logo">Dodo &amp; Rini 🌸</a>
       <ul class="nav-links">
         <li><a href="#schedule">Dates &amp; Events</a></li>
         <li><a href="#calendar">Add to Calendar</a></li>
-        <li><a href="#interests">Food, Flowers &amp; Football</a></li>
+        <li><a href="#interests" id="nav-interests-link">Food, Flowers &amp; Football</a></li>
         <li><a href="#travel">Travel Info</a></li>
         <li><a href="#pre-rsvp" class="nav-btn">Pre-RSVP</a></li>
       </ul>
@@ -50,8 +71,8 @@
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="hero-content">
-        <div class="save-tag">
-          <span>🌅 SAVE THE DATE • GARDEN PARTY 🌿</span>
+        <div class="save-tag" id="hero-badge-tag">
+          <span>🌸 SAVE THE DATE 🌿</span>
         </div>
         
         <h1 class="couple-names">
@@ -60,19 +81,19 @@
           Tarunima <span class="nickname">(Rini)</span>
         </h1>
 
-        <p class="hero-subtitle">Are getting married! Join us for a weekend of golden hour magic, floral blooms, and epic feasts.</p>
+        <p class="hero-subtitle" id="hero-subtitle-text">Are getting married! Join us for a celebratory weekend of love, floral blooms, and epic feasts.</p>
 
         <!-- Featured Couple Photo -->
         <div class="couple-photo-wrapper">
           <div class="photo-frame">
             <img 
               src="./images/subhayu_tarunima_food.jpg" 
-              alt="Subhayu (Dodo) and Tarunima (Rini) enjoying a delicious hibachi and sushi dinner together" 
+              alt="Subhayu (Dodo) and Tarunima (Rini) enjoying a dinner feast together" 
               class="couple-photo"
               id="hero-photo"
             />
-            <div class="photo-caption-badge">
-              <span>🍣 Food Feasts, Garden Walks &amp; Game Days ⚽</span>
+            <div class="photo-caption-badge" id="photo-badge-text">
+              <span>🍱 Delicious Feasts, Blooms &amp; Sweet Moments</span>
             </div>
           </div>
         </div>
@@ -135,10 +156,10 @@
     <section class="events-section" id="schedule">
       <div class="container">
         <div class="text-center">
-          <span class="section-tag font-alt">The Celebrations</span>
+          <span class="section-tag font-alt" id="events-tag">The Celebrations</span>
           <h2 class="section-title">Save Two Special Days</h2>
-          <p class="section-description">
-            We are hosting two days of golden hour warmth, joy, and unforgettable food in the beautiful South Bay Area.
+          <p class="section-description" id="events-desc">
+            We are hosting two days of romance, joy, and unforgettable food in the beautiful South Bay Area.
           </p>
         </div>
 
@@ -146,7 +167,7 @@
           <!-- Event 1: Wedding -->
           <div class="event-card glass-card">
             <div class="event-badge">Day 1</div>
-            <div class="event-icon">🌸💍</div>
+            <div class="event-icon" id="event1-icon">🌸💍</div>
             <h3 class="event-name">The Wedding Ceremony</h3>
             <div class="event-date">Thursday, November 12, 2026</div>
             <div class="event-location">
@@ -161,12 +182,12 @@
           <!-- Event 2: Reception -->
           <div class="event-card glass-card">
             <div class="event-badge">Day 2</div>
-            <div class="event-icon">🥂✨</div>
+            <div class="event-icon" id="event2-icon">🥂✨</div>
             <h3 class="event-name">The Grand Reception</h3>
             <div class="event-date">Friday, November 13, 2026</div>
             <div class="event-location">
               <strong>📍 San Jose / South Bay Area, CA</strong>
-              <p>An evening of garden party elegance, gourmet feasts, music, and dancing!</p>
+              <p>An evening of indoor celebration, gourmet feasts, music, and dancing!</p>
             </div>
             <button class="btn btn-outline cal-trigger-btn" data-event="reception">
               + Add Reception to Calendar
@@ -213,7 +234,7 @@
           <span class="section-tag font-alt">Dodo &amp; Rini's Favorites</span>
           <h2 class="section-title">Flowers, Feasts &amp; Football 🌸🍣⚽</h2>
           <p class="section-description">
-            From Rini's love for delicate blooms &amp; garden walks to Dodo's passion for Arsenal &amp; soccer matchday energy, every date ends with delicious food!
+            From Rini's love for delicate blooms &amp; floral aesthetics to Dodo's passion for Arsenal &amp; soccer matchdays, every date ends with delicious food!
           </p>
         </div>
 
@@ -221,8 +242,8 @@
           <!-- Rini's Flowers -->
           <div class="interest-card glass-card">
             <div class="interest-emoji">🌸🌿</div>
-            <h4>Blooms &amp; Floral Gardens</h4>
-            <p>Rini's passion for delicate flowers, botanical gardens, and aesthetic touches that make every moment bloom with beauty.</p>
+            <h4>Blooms &amp; Aesthetics</h4>
+            <p>Rini's passion for delicate flowers, aesthetic arrangements, and sweet touches that make every moment bloom with beauty.</p>
           </div>
 
           <!-- Food Feasts -->
@@ -244,7 +265,7 @@
         <!-- Guest Recommendation Form Card -->
         <div class="glass-card foodie-recommend-box">
           <h3>Got a South Bay Spot or Fun Activity Tip for Us?</h3>
-          <p>We are building our wedding week bucket list! Suggest your favorite local restaurant, garden walk, or sports bar:</p>
+          <p>We are building our wedding week bucket list! Suggest your favorite local restaurant, garden walk, or spot:</p>
           
           <form id="foodie-suggestion-form" class="suggestion-form">
             <div class="form-row">
@@ -338,7 +359,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-large" id="btn-submit-rsvp">
-              <span>Send Pre-RSVP &amp; Stay Updated 🌸</span>
+              <span>Send Pre-RSVP &amp; Stay Updated ✨</span>
             </button>
             <div id="rsvp-feedback" class="form-feedback" aria-live="polite"></div>
           </form>

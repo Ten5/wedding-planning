@@ -3,13 +3,83 @@ import confetti from 'canvas-confetti';
 // Target Wedding Date: November 12, 2026 10:00:00 AM PST
 const WEDDING_DATE = new Date('2026-11-12T10:00:00-08:00');
 
+// Theme Configurations for V1, V2, V3
+const THEME_CONFIGS = {
+  v1: {
+    heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
+    heroSubtitle: "Are getting married! Join us for a celebratory weekend of love, golden light, and epic feasts.",
+    photoBadge: "🍣 Feasts, Blooms & Sweet Moments",
+    confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
+  },
+  v2: {
+    heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
+    heroSubtitle: "Are getting married! An elegant, ultra-chic indoor celebration of our journey together.",
+    photoBadge: "🥂 Modern Elegance & Gourmet Feasts",
+    confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
+  },
+  v3: {
+    heroBadge: "🍷 ROMANTIC SUNSET & CULINARY FEASTS 🍣",
+    heroSubtitle: "Are getting married! A cozy candlelight celebration centered around fine food, blooms & love.",
+    photoBadge: "🕯️ Fine Wine, Sushi Feasts & Loved Ones",
+    confettiColors: ['#B85B6C', '#7A2638', '#D49A36', '#F8E3E6', '#FAF2F3']
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeSwitcher();
   initNavbar();
   initCountdown();
   initCalendarHandlers();
   initFoodieForm();
   initRsvpForm();
 });
+
+/* Theme Switcher Handler for V1, V2, V3 */
+function initThemeSwitcher() {
+  const tabs = document.querySelectorAll('.theme-tab-btn');
+  const htmlEl = document.documentElement;
+
+  // Check URL hash (#v1, #v2, #v3) or localStorage
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  const savedVersion = hash && THEME_CONFIGS[hash] ? hash : (localStorage.getItem('selected_theme_version') || 'v1');
+
+  setThemeVersion(savedVersion);
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      const version = e.currentTarget.dataset.version;
+      setThemeVersion(version);
+      triggerConfetti(THEME_CONFIGS[version].confettiColors);
+    });
+  });
+
+  function setThemeVersion(version) {
+    if (!THEME_CONFIGS[version]) version = 'v1';
+
+    htmlEl.setAttribute('data-theme', version);
+    localStorage.setItem('selected_theme_version', version);
+    window.history.replaceState(null, null, `#${version}`);
+
+    // Update active tab button state
+    tabs.forEach(tab => {
+      if (tab.dataset.version === version) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+
+    // Dynamically update text elements for the selected theme
+    const cfg = THEME_CONFIGS[version];
+    const heroBadge = document.getElementById('hero-badge-tag');
+    const heroSubtitle = document.getElementById('hero-subtitle-text');
+    const photoBadge = document.getElementById('photo-badge-text');
+
+    if (heroBadge) heroBadge.innerHTML = `<span>${cfg.heroBadge}</span>`;
+    if (heroSubtitle) heroSubtitle.textContent = cfg.heroSubtitle;
+    if (photoBadge) photoBadge.innerHTML = `<span>${cfg.photoBadge}</span>`;
+  }
+}
 
 /* Navbar Mobile Toggle & Scroll Effect */
 function initNavbar() {
@@ -30,7 +100,6 @@ function initNavbar() {
       navLinks.classList.toggle('active');
     });
 
-    // Close menu when link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -214,7 +283,7 @@ function initFoodieForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Dodo & Rini's bucket list! 🌸✨`;
+    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Dodo & Rini's bucket list! ✨`;
     form.reset();
   });
 }
@@ -246,12 +315,12 @@ function initRsvpForm() {
   });
 }
 
-/* Romantic Floral Confetti Helper */
-function triggerConfetti() {
+/* Confetti Helper */
+function triggerConfetti(colors) {
   confetti({
     particleCount: 85,
     spread: 75,
     origin: { y: 0.65 },
-    colors: ['#D97760', '#C59B27', '#FCD5CE', '#E8EFE6', '#FADAD0']
+    colors: colors || ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   });
 }

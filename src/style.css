@@ -1,40 +1,102 @@
 /* ==========================================================================
-   Dodo & Rini Save the Date - Garden Party & Golden Hour Design System
-   Palette: Warm Sunset Amber, Botanical Sage Greens, Peach & Rose Gold
+   Dodo & Rini Save the Date - 3 Distinct Theme Versions System
+   Version 1: Golden Hour & Floral Elegance (Light & Warm)
+   Version 2: Modern Minimalist Luxury (Crisp Pearl & Champagne Gold)
+   Version 3: Romantic Sunset & Culinary Joy (Dusty Rose & Warm Burgundy)
    ========================================================================== */
 
-:root {
-  /* Garden Party & Golden Hour Palette */
+/* ==========================================================================
+   THEME VARIATIONS
+   ========================================================================== */
+
+/* --- VERSION 1: Golden Hour & Floral Elegance (Default) --- */
+:root, [data-theme="v1"] {
   --bg-main: #FAF5EF;
   --bg-card: rgba(255, 253, 249, 0.9);
   --bg-card-hover: rgba(255, 255, 255, 0.98);
   --border-card: rgba(224, 122, 95, 0.22);
   --border-card-hover: rgba(244, 162, 97, 0.45);
 
-  --accent-sunset: #E07A5F;
-  --accent-peach: #F4A261;
-  --accent-amber: #D59B27;
-  --accent-sage: #81B29A;
-  --accent-sage-dark: #3D5A45;
-  --accent-cream: #FFFDF9;
-  --accent-blush: #FDEEDC;
+  --accent-primary: #E07A5F;
+  --accent-secondary: #F4A261;
+  --accent-gold: #D59B27;
+  --accent-badge-bg: #FDEEDC;
 
   --text-main: #2B2625;
   --text-muted: #5C5452;
   --text-dim: #857B78;
 
-  /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-handwriting: 'Sacramento', cursive;
-
-  /* Shadows & Blur */
+  --font-sans: 'Outfit', sans-serif;
+  
   --shadow-glow: 0 10px 30px rgba(224, 122, 95, 0.22);
   --shadow-card: 0 12px 35px rgba(180, 120, 90, 0.09);
-  --blur-glass: blur(16px);
+  
+  --orb-1-bg: radial-gradient(circle, #F4A261 0%, transparent 70%);
+  --orb-2-bg: radial-gradient(circle, #81B29A 0%, transparent 70%);
+  --orb-3-bg: radial-gradient(circle, #E07A5F 0%, transparent 70%);
 }
 
-/* Reset & Base Styles */
+/* --- VERSION 2: Modern Minimalist Luxury --- */
+[data-theme="v2"] {
+  --bg-main: #F7F7F8;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-card-hover: #FFFFFF;
+  --border-card: rgba(197, 160, 89, 0.3);
+  --border-card-hover: rgba(197, 160, 89, 0.6);
+
+  --accent-primary: #B8860B;
+  --accent-secondary: #C5A059;
+  --accent-gold: #B8860B;
+  --accent-badge-bg: #F3EFE6;
+
+  --text-main: #111827;
+  --text-muted: #4B5563;
+  --text-dim: #9CA3AF;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Outfit', sans-serif;
+
+  --shadow-glow: 0 10px 30px rgba(197, 160, 89, 0.2);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.05);
+
+  --orb-1-bg: radial-gradient(circle, rgba(197, 160, 89, 0.3) 0%, transparent 70%);
+  --orb-2-bg: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
+  --orb-3-bg: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+}
+
+/* --- VERSION 3: Romantic Sunset & Culinary Joy --- */
+[data-theme="v3"] {
+  --bg-main: #FAF2F3;
+  --bg-card: rgba(255, 250, 251, 0.92);
+  --bg-card-hover: #FFFFFF;
+  --border-card: rgba(184, 91, 108, 0.25);
+  --border-card-hover: rgba(184, 91, 108, 0.5);
+
+  --accent-primary: #B85B6C;
+  --accent-secondary: #7A2638;
+  --accent-gold: #D49A36;
+  --accent-badge-bg: #F8E3E6;
+
+  --text-main: #2D1A1E;
+  --text-muted: #664A50;
+  --text-dim: #94777D;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Outfit', sans-serif;
+
+  --shadow-glow: 0 10px 30px rgba(184, 91, 108, 0.22);
+  --shadow-card: 0 12px 35px rgba(122, 38, 56, 0.08);
+
+  --orb-1-bg: radial-gradient(circle, #E8A5B0 0%, transparent 70%);
+  --orb-2-bg: radial-gradient(circle, #F4C493 0%, transparent 70%);
+  --orb-3-bg: radial-gradient(circle, #B85B6C 0%, transparent 70%);
+}
+
+/* ==========================================================================
+   GLOBAL STYLES & LAYOUT
+   ========================================================================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,19 +109,78 @@ html {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.65;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(244, 162, 97, 0.25) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(129, 178, 154, 0.3) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(253, 238, 220, 0.35) 0%, transparent 60%);
 }
 
-/* Ambient Floating Sunset & Leaf Orbs */
+/* Version Theme Switcher Bar */
+.theme-switcher-bar {
+  background: linear-gradient(90deg, #1E1E24, #2A2A36);
+  color: #FFF;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.switcher-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.switcher-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #F3EFE6;
+}
+
+.switcher-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.theme-tab-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #E2E8F0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.theme-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFF;
+}
+
+.theme-tab-btn.active {
+  background: linear-gradient(135deg, #E07A5F, #F4A261);
+  color: #FFF;
+  border-color: transparent;
+  box-shadow: 0 0 12px rgba(224, 122, 95, 0.4);
+}
+
+/* Ambient Floating Orbs */
 .ambient-background {
   position: fixed;
   top: 0;
@@ -77,12 +198,13 @@ body {
   filter: blur(75px);
   opacity: 0.55;
   animation: floatOrb 22s infinite ease-in-out alternate;
+  transition: background 0.6s ease;
 }
 
 .orb-1 {
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, #F4A261 0%, transparent 70%);
+  background: var(--orb-1-bg);
   top: -5%;
   left: -5%;
 }
@@ -90,7 +212,7 @@ body {
 .orb-2 {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, #81B29A 0%, transparent 70%);
+  background: var(--orb-2-bg);
   bottom: 5%;
   right: -5%;
   animation-delay: -8s;
@@ -99,7 +221,7 @@ body {
 .orb-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #E07A5F 0%, transparent 70%);
+  background: var(--orb-3-bg);
   top: 45%;
   left: 35%;
   animation-delay: -14s;
@@ -123,14 +245,12 @@ body {
 }
 
 .font-alt {
-  font-family: var(--font-handwriting);
+  font-family: 'Sacramento', cursive;
 }
 
 /* Navigation Bar */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 100;
   padding: 1.1rem 0;
@@ -138,10 +258,10 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(250, 245, 239, 0.94);
-  backdrop-filter: var(--blur-glass);
-  border-bottom: 1px solid rgba(224, 122, 95, 0.2);
-  box-shadow: 0 4px 20px rgba(180, 120, 90, 0.08);
+  background: var(--bg-main);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-card);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   padding: 0.8rem 0;
 }
 
@@ -158,7 +278,7 @@ body {
   font-family: var(--font-serif);
   font-size: 1.7rem;
   font-weight: 700;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   text-decoration: none;
   letter-spacing: 0.5px;
 }
@@ -179,16 +299,16 @@ body {
 }
 
 .nav-links a:hover {
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
 }
 
 .nav-btn {
-  background: linear-gradient(135deg, var(--accent-sunset), var(--accent-peach));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: #FFF !important;
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-weight: 600 !important;
-  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-toggle {
@@ -203,7 +323,7 @@ body {
   display: block;
   width: 25px;
   height: 2px;
-  background: var(--accent-sunset);
+  background: var(--accent-primary);
   margin: 5px 0;
   transition: all 0.3s ease;
 }
@@ -226,18 +346,18 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-sunset) 0%, var(--accent-peach) 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: #FFF;
   box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(224, 122, 95, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--bg-card);
   color: var(--text-main);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-card);
@@ -246,21 +366,21 @@ body {
 
 .btn-secondary:hover {
   background: #FFF;
-  border-color: var(--accent-sunset);
-  color: var(--accent-sunset);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--accent-sunset);
-  border: 1px solid var(--accent-sunset);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
   padding: 0.65rem 1.3rem;
   font-size: 0.92rem;
 }
 
 .btn-outline:hover {
-  background: var(--accent-sunset);
+  background: var(--accent-primary);
   color: #FFF;
 }
 
@@ -270,16 +390,16 @@ body {
   font-size: 1.1rem;
 }
 
-/* Garden Glass Card Utility */
+/* Glass Card Utility */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: var(--blur-glass);
-  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-card);
   border-radius: 26px;
   padding: 2.5rem;
   box-shadow: var(--shadow-card);
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .glass-card:hover {
@@ -290,7 +410,7 @@ body {
 /* Typography Headings */
 .section-tag {
   font-size: 2.2rem;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   display: block;
   margin-bottom: 0.2rem;
 }
@@ -312,9 +432,9 @@ body {
 
 /* Hero Section */
 .hero-section {
-  padding: 8.5rem 1.5rem 5rem 1.5rem;
+  padding: 5rem 1.5rem 5rem 1.5rem;
   text-align: center;
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -330,13 +450,14 @@ body {
   font-size: 0.85rem;
   letter-spacing: 3px;
   font-weight: 700;
-  color: var(--accent-sunset);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(224, 122, 95, 0.35);
+  color: var(--accent-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   padding: 0.45rem 1.4rem;
   border-radius: 50px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.12);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
 }
 
 .couple-names {
@@ -351,13 +472,13 @@ body {
 .couple-names .nickname {
   font-size: 2.5rem;
   font-weight: 400;
-  color: var(--accent-sunset);
-  font-family: var(--font-handwriting);
+  color: var(--accent-primary);
+  font-family: 'Sacramento', cursive;
   margin: 0 0.3rem;
 }
 
 .couple-names .ampersand {
-  color: var(--accent-peach);
+  color: var(--accent-secondary);
   font-style: italic;
   margin: 0 0.5rem;
 }
@@ -369,7 +490,7 @@ body {
   font-weight: 400;
 }
 
-/* Hero Couple Photo Frame with Golden Hour Sunset Glow */
+/* Hero Couple Photo Frame */
 .couple-photo-wrapper {
   margin: 0 auto 2.5rem auto;
   max-width: 580px;
@@ -379,8 +500,8 @@ body {
   position: relative;
   border-radius: 30px;
   padding: 12px;
-  background: linear-gradient(135deg, #F4A261 0%, #E07A5F 50%, #81B29A 100%);
-  box-shadow: 0 20px 45px rgba(224, 122, 95, 0.2);
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 50%, var(--border-card) 100%);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -403,7 +524,7 @@ body {
   transform: translateX(-50%);
   background: #FFF;
   border: 1px solid var(--border-card);
-  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.18);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   color: var(--text-main);
@@ -417,9 +538,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--bg-card);
   border: 1px solid var(--border-card);
-  backdrop-filter: var(--blur-glass);
+  backdrop-filter: blur(16px);
   padding: 1.1rem 2rem;
   border-radius: 50px;
   gap: 2rem;
@@ -452,7 +573,7 @@ body {
 .pill-divider {
   width: 1px;
   height: 35px;
-  background: rgba(224, 122, 95, 0.25);
+  background: var(--border-card);
 }
 
 .hero-cta-group {
@@ -476,9 +597,9 @@ body {
 }
 
 .time-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--bg-card);
   border: 1px solid var(--border-card);
-  backdrop-filter: var(--blur-glass);
+  backdrop-filter: blur(16px);
   border-radius: 22px;
   width: 135px;
   padding: 1.5rem 1rem;
@@ -491,7 +612,7 @@ body {
   font-family: var(--font-serif);
   font-size: 3.2rem;
   font-weight: 700;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   line-height: 1;
   margin-bottom: 0.3rem;
 }
@@ -524,9 +645,9 @@ body {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: var(--accent-blush);
-  border: 1px solid var(--accent-peach);
-  color: var(--accent-sunset);
+  background: var(--accent-badge-bg);
+  border: 1px solid var(--border-card);
+  color: var(--accent-primary);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.35rem 0.9rem;
@@ -548,18 +669,18 @@ body {
 
 .event-date {
   font-size: 1.1rem;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   font-weight: 600;
   margin-bottom: 1.2rem;
 }
 
 .event-location {
-  background: rgba(250, 245, 239, 0.85);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: 14px;
   padding: 1rem;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
-  border: 1px solid rgba(224, 122, 95, 0.18);
+  border: 1px solid var(--border-card);
 }
 
 .event-location strong {
@@ -626,17 +747,17 @@ body {
 }
 
 .cal-option-btn:hover {
-  background: var(--accent-blush);
-  border-color: var(--accent-sunset);
+  background: var(--accent-badge-bg);
+  border-color: var(--accent-primary);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(224, 122, 95, 0.18);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .cal-icon {
   font-size: 1.8rem;
 }
 
-/* Foodie, Arsenal & Botanical Interests */
+/* Foodie & Arsenal Interests */
 .foodie-section {
   padding: 6rem 1.5rem;
 }
@@ -661,7 +782,7 @@ body {
 .interest-card h4 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -670,7 +791,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Special Arsenal / Gunners Badge */
 .arsenal-tag {
   display: inline-block;
   font-size: 0.78rem;
@@ -709,7 +829,7 @@ body {
 
 .form-input {
   background: #FFF;
-  border: 1px solid rgba(224, 122, 95, 0.3);
+  border: 1px solid var(--border-card);
   border-radius: 14px;
   padding: 0.9rem 1.2rem;
   color: var(--text-main);
@@ -723,8 +843,8 @@ body {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--accent-sunset);
-  box-shadow: 0 0 12px rgba(224, 122, 95, 0.22);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
 .form-feedback {
@@ -775,7 +895,7 @@ body {
 }
 
 .travel-card li strong {
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
 }
 
 .travel-card p {
@@ -834,15 +954,15 @@ select.form-input option {
 
 /* Footer */
 .footer {
-  border-top: 1px solid rgba(224, 122, 95, 0.2);
+  border-top: 1px solid var(--border-card);
   padding: 3.5rem 1.5rem;
-  background: rgba(250, 245, 239, 0.95);
+  background: var(--bg-main);
 }
 
 .footer-names {
   font-family: var(--font-serif);
   font-size: 1.7rem;
-  color: var(--accent-sunset);
+  color: var(--accent-primary);
   margin-bottom: 0.4rem;
 }
 
@@ -859,6 +979,10 @@ select.form-input option {
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
+  .switcher-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .couple-names {
     font-size: 2.8rem;
   }
@@ -893,10 +1017,10 @@ select.form-input option {
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(250, 245, 239, 0.98);
-    backdrop-filter: var(--blur-glass);
+    background: var(--bg-main);
+    backdrop-filter: blur(16px);
     flex-direction: column;
     padding: 1.5rem;
-    border-bottom: 1px solid rgba(224, 122, 95, 0.2);
+    border-bottom: 1px solid var(--border-card);
   }
 }
