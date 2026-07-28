@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date | Subhayu (Dodo) &amp; Tarunima (Rini)</title>
+  <meta name="description" content="Save the Date for Subhayu (Dodo) &amp; Tarunima (Rini)'s Wedding! November 12 &amp; 13, 2026 • San Jose / South Bay Area, CA.">
+  
+  <!-- OpenGraph Meta Tags for preview when shared on WhatsApp, iMessage, etc. -->
+  <meta property="og:title" content="Save the Date: Subhayu &amp; Tarunima Are Getting Married!">
+  <meta property="og:description" content="Nov 12 Wedding • Nov 13 Reception • San Jose / South Bay Area, CA. Save the date and join us in celebrating!">
+  <meta property="og:image" content="./images/subhayu_tarunima_food.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <!-- Ambient Floating Background Particles -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="main-nav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Dodo &amp; Rini</a>
+      <ul class="nav-links">
+        <li><a href="#schedule">Dates &amp; Events</a></li>
+        <li><a href="#calendar">Add to Calendar</a></li>
+        <li><a href="#foodie">Foodie Highlights</a></li>
+        <li><a href="#travel">Travel Info</a></li>
+        <li><a href="#pre-rsvp" class="nav-btn">Pre-RSVP</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="save-tag">
+          <span class="sparkle-icon">✨</span> SAVE THE DATE <span class="sparkle-icon">✨</span>
+        </div>
+        
+        <h1 class="couple-names">
+          Subhayu <span class="nickname">(Dodo)</span>
+          <span class="ampersand">&amp;</span>
+          Tarunima <span class="nickname">(Rini)</span>
+        </h1>
+
+        <p class="hero-subtitle">Are getting married! Join us on our sweetest adventure yet.</p>
+
+        <!-- Featured Couple Photo -->
+        <div class="couple-photo-wrapper">
+          <div class="photo-frame">
+            <img 
+              src="./images/subhayu_tarunima_food.jpg" 
+              alt="Subhayu (Dodo) and Tarunima (Rini) enjoying a delicious hibachi and sushi dinner together" 
+              class="couple-photo"
+              id="hero-photo"
+            />
+            <div class="photo-caption-badge">
+              <span>🍱 Two foodies in love</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-details-pill">
+          <div class="pill-item">
+            <span class="pill-icon">📅</span>
+            <div>
+              <strong>November 12 &amp; 13, 2026</strong>
+              <small>Thursday &amp; Friday</small>
+            </div>
+          </div>
+          <div class="pill-divider"></div>
+          <div class="pill-item">
+            <span class="pill-icon">📍</span>
+            <div>
+              <strong>San Jose / South Bay Area, CA</strong>
+              <small>Exact venues coming soon</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#calendar" class="btn btn-primary" id="hero-cal-btn">
+            <span>📅 Save to Calendar</span>
+          </a>
+          <a href="#pre-rsvp" class="btn btn-secondary" id="hero-rsvp-btn">
+            <span>💌 Early RSVP / Notify Me</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN SECTION -->
+    <section class="countdown-section" id="countdown-anchor">
+      <div class="container">
+        <h2 class="section-title">Counting Down To November 12, 2026</h2>
+        <div class="countdown-grid" id="countdown-timer">
+          <div class="time-card">
+            <span class="time-val" id="cd-days">00</span>
+            <span class="time-label">Days</span>
+          </div>
+          <div class="time-card">
+            <span class="time-val" id="cd-hours">00</span>
+            <span class="time-label">Hours</span>
+          </div>
+          <div class="time-card">
+            <span class="time-val" id="cd-minutes">00</span>
+            <span class="time-label">Minutes</span>
+          </div>
+          <div class="time-card">
+            <span class="time-val" id="cd-seconds">00</span>
+            <span class="time-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE & EVENTS SECTION -->
+    <section class="events-section" id="schedule">
+      <div class="container">
+        <span class="section-tag font-alt">The Celebrations</span>
+        <h2 class="section-title">Save Two Special Days</h2>
+        <p class="section-description">
+          We are hosting two days of love, laughter, and incredible food in the beautiful South Bay Area.
+        </p>
+
+        <div class="events-grid">
+          <!-- Event 1: Wedding -->
+          <div class="event-card glass-card">
+            <div class="event-badge">Day 1</div>
+            <div class="event-icon">💍</div>
+            <h3 class="event-name">The Wedding Ceremony</h3>
+            <div class="event-date">Thursday, November 12, 2026</div>
+            <div class="event-location">
+              <strong>📍 San Jose / South Bay Area, CA</strong>
+              <p>Exact venue address &amp; ceremony timings will be shared in our formal invitation.</p>
+            </div>
+            <button class="btn btn-outline cal-trigger-btn" data-event="wedding">
+              + Add Wedding to Calendar
+            </button>
+          </div>
+
+          <!-- Event 2: Reception -->
+          <div class="event-card glass-card">
+            <div class="event-badge">Day 2</div>
+            <div class="event-icon">🥂</div>
+            <h3 class="event-name">The Grand Reception</h3>
+            <div class="event-date">Friday, November 13, 2026</div>
+            <div class="event-location">
+              <strong>📍 San Jose / South Bay Area, CA</strong>
+              <p>An evening of dinner, music, dancing, and culinary delights!</p>
+            </div>
+            <button class="btn btn-outline cal-trigger-btn" data-event="reception">
+              + Add Reception to Calendar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADD TO CALENDAR MODAL / DIRECT SECTION -->
+    <section class="calendar-section" id="calendar">
+      <div class="container text-center">
+        <div class="glass-card calendar-hero-card">
+          <span class="card-sparkle">🗓️</span>
+          <h2>Don't Forget to Block Your Calendar!</h2>
+          <p>Choose your preferred calendar service below to instantly save our dates.</p>
+          
+          <div class="calendar-options-grid">
+            <button class="cal-option-btn" id="btn-gcal">
+              <span class="cal-icon">🌐</span>
+              <span>Google Calendar</span>
+            </button>
+            <button class="cal-option-btn" id="btn-ical">
+              <span class="cal-icon">🍏</span>
+              <span>Apple Calendar (.ics)</span>
+            </button>
+            <button class="cal-option-btn" id="btn-outlook">
+              <span class="cal-icon">📧</span>
+              <span>Outlook Calendar</span>
+            </button>
+            <button class="cal-option-btn" id="btn-yahoo">
+              <span class="cal-icon">💜</span>
+              <span>Yahoo Calendar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOODIE HIGHLIGHTS SECTION -->
+    <section class="foodie-section" id="foodie">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tag font-alt">Dodo &amp; Rini's Favorite Things</span>
+          <h2 class="section-title">Bonded Over Good Eats 🍣🍜</h2>
+          <p class="section-description">
+            If you know us, you know every great memory starts around a dinner table! Here are a few of our favorite spots around the Bay Area, and we'd love to hear your suggestions.
+          </p>
+        </div>
+
+        <div class="foodie-grid">
+          <div class="food-card glass-card">
+            <div class="food-emoji">🍱</div>
+            <h4>Hibachi &amp; Teppanyaki</h4>
+            <p>Sizzling fried rice, scallops, and high-energy chef tables are our ultimate celebration go-to!</p>
+          </div>
+          <div class="food-card glass-card">
+            <div class="food-emoji">🍣</div>
+            <h4>Sushi &amp; Nigiri</h4>
+            <p>Fresh salmon, tuna rolls, and spicy mayo delicacies. Never enough sushi!</p>
+          </div>
+          <div class="food-card glass-card">
+            <div class="food-emoji">☕</div>
+            <h4>Matcha &amp; Desserts</h4>
+            <p>Ending every food adventure with matcha lattes, boba, or warm decadent pastries.</p>
+          </div>
+        </div>
+
+        <!-- Guest Food Recommendation Form Card -->
+        <div class="glass-card foodie-recommend-box">
+          <h3>Got a South Bay Food Spot or Dish Recommendation for Us?</h3>
+          <p>We are building our wedding week dining bucket list! Suggest your favorite local restaurant or dish:</p>
+          
+          <form id="foodie-suggestion-form" class="suggestion-form">
+            <div class="form-row">
+              <input type="text" id="food-guest-name" placeholder="Your Name" required class="form-input">
+              <input type="text" id="food-spot-name" placeholder="Restaurant Name &amp; Dish (e.g. Ramen Nagi, San Jose)" required class="form-input">
+              <button type="submit" class="btn btn-primary" id="btn-submit-food">Submit Food Tip 🍜</button>
+            </div>
+            <div id="food-form-feedback" class="form-feedback" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAVEL INFO SECTION -->
+    <section class="travel-section" id="travel">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tag font-alt">Guest Logistics</span>
+          <h2 class="section-title">Getting to San Jose &amp; South Bay</h2>
+          <p class="section-description">
+            For our friends and family traveling from afar, here are the convenient entry points to the Silicon Valley &amp; South Bay area.
+          </p>
+        </div>
+
+        <div class="travel-grid">
+          <div class="travel-card glass-card">
+            <div class="travel-icon">✈️</div>
+            <h3>Airports</h3>
+            <ul>
+              <li><strong>SJC (San Jose Mineta Airport)</strong>: ~10-15 mins to central venues (Most convenient!).</li>
+              <li><strong>SFO (San Francisco Airport)</strong>: ~45-50 mins drive north.</li>
+              <li><strong>OAK (Oakland Airport)</strong>: ~40-45 mins drive across the bay.</li>
+            </ul>
+          </div>
+
+          <div class="travel-card glass-card">
+            <div class="travel-icon">🏨</div>
+            <h3>Accommodations</h3>
+            <p>
+              We recommend looking at hotels around <strong>Downtown San Jose</strong>, <strong>Santana Row / Valley Fair</strong>, or <strong>Sunnyvale/Santa Clara</strong>. Hotel block details will be emailed in our formal invitation!
+            </p>
+          </div>
+
+          <div class="travel-card glass-card">
+            <div class="travel-icon">🚗</div>
+            <h3>Getting Around</h3>
+            <p>
+              Rideshares (Uber/Lyft) are widely available throughout San Jose and the South Bay. Car rentals are also available at all major airports.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE-RSVP / NOTIFY ME SECTION -->
+    <section class="rsvp-section" id="pre-rsvp">
+      <div class="container text-center">
+        <div class="glass-card rsvp-card">
+          <span class="rsvp-icon">💌</span>
+          <h2 class="section-title">Keep Me Updated / Pre-RSVP</h2>
+          <p class="section-description">
+            Leave your contact details below so Dodo &amp; Rini can send you the official invitation, exact timings, and venue address as soon as they are locked in!
+          </p>
+
+          <form id="pre-rsvp-form" class="rsvp-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="rsvp-full-name">Full Name(s)</label>
+                <input type="text" id="rsvp-full-name" required placeholder="e.g. Alex &amp; Morgan" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-email">Email Address</label>
+                <input type="email" id="rsvp-email" required placeholder="you@example.com" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-attendance">Will you likely join us?</label>
+                <select id="rsvp-attendance" class="form-input">
+                  <option value="yes">Joyfully Yes! (Nov 12 &amp; 13)</option>
+                  <option value="wedding-only">Yes, for Nov 12 Wedding</option>
+                  <option value="reception-only">Yes, for Nov 13 Reception</option>
+                  <option value="maybe">Celebrating from afar / TBD</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="rsvp-notes">A Message for Dodo &amp; Rini (Optional)</label>
+                <textarea id="rsvp-notes" rows="3" placeholder="Share your excitement or well wishes!" class="form-input"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large" id="btn-submit-rsvp">
+              <span>Send Pre-RSVP &amp; Stay Updated ✨</span>
+            </button>
+            <div id="rsvp-feedback" class="form-feedback" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="footer-names">Subhayu (Dodo) &amp; Tarunima (Rini)</p>
+      <p class="footer-date">Nov 12 &amp; 13, 2026 • San Jose / South Bay Area, CA</p>
+      <p class="footer-credit">Made with ❤️ for family &amp; friends</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
