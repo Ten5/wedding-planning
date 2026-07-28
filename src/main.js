@@ -86,7 +86,7 @@ const EVENT_DETAILS = {
   },
   reception: {
     title: "Subhayu (Dodo) & Tarunima (Rini) - Grand Reception",
-    description: "Save the Date for Subhayu & Tarunima's Grand Reception in San Jose / South Bay Area, CA! Evening dinner, music, and celebration.",
+    description: "Save the Date for Subhayu & Tarunima's Grand Reception in San Jose / South Bay Area, CA! Evening dinner, music, dancing, and celebration.",
     location: "San Jose / South Bay Area, CA",
     startDate: "20261113T180000",
     endDate: "20261113T230000",
@@ -101,7 +101,6 @@ function initCalendarHandlers() {
   const outlookBtn = document.getElementById('btn-outlook');
   const yahooBtn = document.getElementById('btn-yahoo');
 
-  // Trigger buttons in event cards
   document.querySelectorAll('.cal-trigger-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const eventType = e.target.dataset.event || 'wedding';
@@ -195,7 +194,7 @@ function downloadIcs(ev) {
   document.body.removeChild(link);
 }
 
-/* Foodie Suggestion Form */
+/* Foodie & Activity Suggestion Form */
 function initFoodieForm() {
   const form = document.getElementById('foodie-suggestion-form');
   const feedback = document.getElementById('food-form-feedback');
@@ -209,14 +208,13 @@ function initFoodieForm() {
 
     if (!guestName || !spotName) return;
 
-    // Store in localStorage
     const saved = JSON.parse(localStorage.getItem('food_suggestions') || '[]');
     saved.push({ name: guestName, spot: spotName, date: new Date().toISOString() });
     localStorage.setItem('food_suggestions', JSON.stringify(saved));
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Dodo & Rini's foodie bucket list! 🍣✨`;
+    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Dodo & Rini's bucket list! 🌸✨`;
     form.reset();
   });
 }
@@ -237,7 +235,6 @@ function initRsvpForm() {
 
     if (!fullName || !email) return;
 
-    // Store pre-RSVP entry in localStorage
     const rsvpEntries = JSON.parse(localStorage.getItem('pre_rsvp_entries') || '[]');
     rsvpEntries.push({ fullName, email, attendance, notes, timestamp: new Date().toISOString() });
     localStorage.setItem('pre_rsvp_entries', JSON.stringify(rsvpEntries));
@@ -249,12 +246,12 @@ function initRsvpForm() {
   });
 }
 
-/* Confetti Helper */
+/* Romantic Floral Confetti Helper */
 function triggerConfetti() {
   confetti({
-    particleCount: 80,
-    spread: 70,
+    particleCount: 85,
+    spread: 75,
     origin: { y: 0.65 },
-    colors: ['#e2b04c', '#e07a5f', '#fefae0', '#f4a261']
+    colors: ['#D97760', '#C59B27', '#FCD5CE', '#E8EFE6', '#FADAD0']
   });
 }
