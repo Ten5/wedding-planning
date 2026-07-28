@@ -39,7 +39,6 @@ function initThemeSwitcher() {
   const tabs = document.querySelectorAll('.theme-tab-btn');
   const htmlEl = document.documentElement;
 
-  // Check URL hash (#v1, #v2, #v3) or localStorage
   const hash = window.location.hash.replace('#', '').toLowerCase();
   const savedVersion = hash && THEME_CONFIGS[hash] ? hash : (localStorage.getItem('selected_theme_version') || 'v1');
 
@@ -60,7 +59,6 @@ function initThemeSwitcher() {
     localStorage.setItem('selected_theme_version', version);
     window.history.replaceState(null, null, `#${version}`);
 
-    // Update active tab button state
     tabs.forEach(tab => {
       if (tab.dataset.version === version) {
         tab.classList.add('active');
@@ -69,7 +67,6 @@ function initThemeSwitcher() {
       }
     });
 
-    // Dynamically update text elements for the selected theme
     const cfg = THEME_CONFIGS[version];
     const heroBadge = document.getElementById('hero-badge-tag');
     const heroSubtitle = document.getElementById('hero-subtitle-text');
@@ -142,11 +139,11 @@ function initCountdown() {
   setInterval(update, 1000);
 }
 
-/* Calendar Event Data & Link Generators */
+/* Calendar Event Data & Link Generators (Bride First) */
 const EVENT_DETAILS = {
   wedding: {
-    title: "Subhayu (Dodo) & Tarunima (Rini) - Wedding",
-    description: "Save the Date for Subhayu & Tarunima's Wedding Ceremony in San Jose / South Bay Area, CA! Formal invitations with exact venue and timing to follow.",
+    title: "Tarunima (Rini) & Subhayu (Dodo) - Wedding",
+    description: "Save the Date for Tarunima & Subhayu's Wedding Ceremony in San Jose / South Bay Area, CA! Formal invitations with exact venue and timing to follow.",
     location: "San Jose / South Bay Area, CA",
     startDate: "20261112T100000",
     endDate: "20261112T160000",
@@ -154,8 +151,8 @@ const EVENT_DETAILS = {
     isoEnd: "2026-11-12T16:00:00-08:00"
   },
   reception: {
-    title: "Subhayu (Dodo) & Tarunima (Rini) - Grand Reception",
-    description: "Save the Date for Subhayu & Tarunima's Grand Reception in San Jose / South Bay Area, CA! Evening dinner, music, dancing, and celebration.",
+    title: "Tarunima (Rini) & Subhayu (Dodo) - Grand Reception",
+    description: "Save the Date for Tarunima & Subhayu's Grand Reception in San Jose / South Bay Area, CA! Evening dinner, music, dancing, and celebration.",
     location: "San Jose / South Bay Area, CA",
     startDate: "20261113T180000",
     endDate: "20261113T230000",
@@ -241,7 +238,7 @@ function downloadIcs(ev) {
   const icsData = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Dodo & Rini Wedding//Save The Date//EN',
+    'PRODID:-//Rini & Dodo Wedding//Save The Date//EN',
     'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
     `SUMMARY:${ev.title}`,
@@ -283,7 +280,7 @@ function initFoodieForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Dodo & Rini's bucket list! ✨`;
+    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Rini & Dodo's bucket list! ✨`;
     form.reset();
   });
 }
@@ -310,7 +307,7 @@ function initRsvpForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Woohoo! Thank you ${fullName}! Your contact details have been saved. Dodo & Rini will keep you posted! 💌✨`;
+    feedback.textContent = `Woohoo! Thank you ${fullName}! Your contact details have been saved. Rini & Dodo will keep you posted! 💌✨`;
     form.reset();
   });
 }
