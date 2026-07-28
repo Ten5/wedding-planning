@@ -1,26 +1,27 @@
 /* ==========================================================================
-   Dodo & Rini Save the Date - Light Romantic Floral Design System
+   Dodo & Rini Save the Date - Garden Party & Golden Hour Design System
+   Palette: Warm Sunset Amber, Botanical Sage Greens, Peach & Rose Gold
    ========================================================================== */
 
 :root {
-  /* Lighter, Romantic Floral Color Palette */
-  --bg-main: #FAF7F2;
-  --bg-card: rgba(255, 255, 255, 0.88);
-  --bg-card-hover: rgba(255, 255, 255, 0.96);
-  --border-card: rgba(226, 176, 76, 0.25);
-  --border-card-hover: rgba(212, 143, 116, 0.45);
+  /* Garden Party & Golden Hour Palette */
+  --bg-main: #FAF5EF;
+  --bg-card: rgba(255, 253, 249, 0.9);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --border-card: rgba(224, 122, 95, 0.22);
+  --border-card-hover: rgba(244, 162, 97, 0.45);
 
-  --accent-gold: #C59B27;
-  --accent-gold-light: #F4E8C1;
-  --accent-rose: #D97760;
-  --accent-rose-soft: #FADAD0;
-  --accent-blush: #FFF0EB;
-  --accent-sage: #E8EFE6;
+  --accent-sunset: #E07A5F;
+  --accent-peach: #F4A261;
+  --accent-amber: #D59B27;
+  --accent-sage: #81B29A;
+  --accent-sage-dark: #3D5A45;
   --accent-cream: #FFFDF9;
-  
-  --text-main: #2C2A29;
-  --text-muted: #5A5653;
-  --text-dim: #7E7873;
+  --accent-blush: #FDEEDC;
+
+  --text-main: #2B2625;
+  --text-muted: #5C5452;
+  --text-dim: #857B78;
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -28,8 +29,8 @@
   --font-handwriting: 'Sacramento', cursive;
 
   /* Shadows & Blur */
-  --shadow-glow: 0 10px 30px rgba(217, 119, 96, 0.18);
-  --shadow-card: 0 12px 35px rgba(180, 140, 120, 0.1);
+  --shadow-glow: 0 10px 30px rgba(224, 122, 95, 0.22);
+  --shadow-card: 0 12px 35px rgba(180, 120, 90, 0.09);
   --blur-glass: blur(16px);
 }
 
@@ -53,12 +54,12 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(250, 218, 208, 0.35) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(232, 239, 230, 0.45) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(244, 232, 193, 0.25) 0%, transparent 60%);
+    radial-gradient(circle at 15% 15%, rgba(244, 162, 97, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(129, 178, 154, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(253, 238, 220, 0.35) 0%, transparent 60%);
 }
 
-/* Ambient Floating Floral Petals & Soft Orbs */
+/* Ambient Floating Sunset & Leaf Orbs */
 .ambient-background {
   position: fixed;
   top: 0;
@@ -73,32 +74,32 @@ body {
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.6;
+  filter: blur(75px);
+  opacity: 0.55;
   animation: floatOrb 22s infinite ease-in-out alternate;
 }
 
 .orb-1 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, #FCD5CE 0%, transparent 70%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #F4A261 0%, transparent 70%);
   top: -5%;
   left: -5%;
 }
 
 .orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #D8E2DC 0%, transparent 70%);
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, #81B29A 0%, transparent 70%);
   bottom: 5%;
   right: -5%;
   animation-delay: -8s;
 }
 
 .orb-3 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #FFE5D9 0%, transparent 70%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #E07A5F 0%, transparent 70%);
   top: 45%;
   left: 35%;
   animation-delay: -14s;
@@ -106,8 +107,8 @@ body {
 
 @keyframes floatOrb {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, 30px) scale(1.08); }
-  100% { transform: translate(-30px, 50px) scale(0.96); }
+  50% { transform: translate(45px, 35px) scale(1.08); }
+  100% { transform: translate(-35px, 55px) scale(0.95); }
 }
 
 /* Containers */
@@ -137,10 +138,10 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(250, 247, 242, 0.92);
+  background: rgba(250, 245, 239, 0.94);
   backdrop-filter: var(--blur-glass);
-  border-bottom: 1px solid rgba(226, 176, 76, 0.2);
-  box-shadow: 0 4px 20px rgba(180, 140, 120, 0.08);
+  border-bottom: 1px solid rgba(224, 122, 95, 0.2);
+  box-shadow: 0 4px 20px rgba(180, 120, 90, 0.08);
   padding: 0.8rem 0;
 }
 
@@ -157,7 +158,7 @@ body {
   font-family: var(--font-serif);
   font-size: 1.7rem;
   font-weight: 700;
-  color: var(--accent-gold);
+  color: var(--accent-sunset);
   text-decoration: none;
   letter-spacing: 0.5px;
 }
@@ -178,16 +179,16 @@ body {
 }
 
 .nav-links a:hover {
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
 }
 
 .nav-btn {
-  background: linear-gradient(135deg, var(--accent-rose), var(--accent-rose-soft));
+  background: linear-gradient(135deg, var(--accent-sunset), var(--accent-peach));
   color: #FFF !important;
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-weight: 600 !important;
-  box-shadow: 0 4px 15px rgba(217, 119, 96, 0.25);
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
 }
 
 .mobile-toggle {
@@ -202,7 +203,7 @@ body {
   display: block;
   width: 25px;
   height: 2px;
-  background: var(--accent-rose);
+  background: var(--accent-sunset);
   margin: 5px 0;
   transition: all 0.3s ease;
 }
@@ -225,18 +226,18 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-gold) 100%);
+  background: linear-gradient(135deg, var(--accent-sunset) 0%, var(--accent-peach) 100%);
   color: #FFF;
   box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(217, 119, 96, 0.35);
+  box-shadow: 0 8px 25px rgba(224, 122, 95, 0.4);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   color: var(--text-main);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-card);
@@ -245,21 +246,21 @@ body {
 
 .btn-secondary:hover {
   background: #FFF;
-  border-color: var(--accent-rose);
-  color: var(--accent-rose);
+  border-color: var(--accent-sunset);
+  color: var(--accent-sunset);
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--accent-rose);
-  border: 1px solid var(--accent-rose);
+  color: var(--accent-sunset);
+  border: 1px solid var(--accent-sunset);
   padding: 0.65rem 1.3rem;
   font-size: 0.92rem;
 }
 
 .btn-outline:hover {
-  background: var(--accent-rose);
+  background: var(--accent-sunset);
   color: #FFF;
 }
 
@@ -269,7 +270,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Light Glass Card Utility */
+/* Garden Glass Card Utility */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: var(--blur-glass);
@@ -288,8 +289,8 @@ body {
 
 /* Typography Headings */
 .section-tag {
-  font-size: 2.1rem;
-  color: var(--accent-rose);
+  font-size: 2.2rem;
+  color: var(--accent-sunset);
   display: block;
   margin-bottom: 0.2rem;
 }
@@ -329,18 +330,18 @@ body {
   font-size: 0.85rem;
   letter-spacing: 3px;
   font-weight: 700;
-  color: var(--accent-gold);
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 176, 76, 0.4);
+  color: var(--accent-sunset);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(224, 122, 95, 0.35);
   padding: 0.45rem 1.4rem;
   border-radius: 50px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 15px rgba(226, 176, 76, 0.15);
+  box-shadow: 0 4px 15px rgba(224, 122, 95, 0.12);
 }
 
 .couple-names {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 4.1rem;
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-main);
@@ -348,15 +349,15 @@ body {
 }
 
 .couple-names .nickname {
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   font-weight: 400;
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
   font-family: var(--font-handwriting);
   margin: 0 0.3rem;
 }
 
 .couple-names .ampersand {
-  color: var(--accent-gold);
+  color: var(--accent-peach);
   font-style: italic;
   margin: 0 0.5rem;
 }
@@ -368,7 +369,7 @@ body {
   font-weight: 400;
 }
 
-/* Hero Couple Photo Frame with Floral Border Glow */
+/* Hero Couple Photo Frame with Golden Hour Sunset Glow */
 .couple-photo-wrapper {
   margin: 0 auto 2.5rem auto;
   max-width: 580px;
@@ -378,8 +379,8 @@ body {
   position: relative;
   border-radius: 30px;
   padding: 12px;
-  background: linear-gradient(135deg, #FADAD0 0%, #F4E8C1 50%, #D8E2DC 100%);
-  box-shadow: 0 20px 45px rgba(217, 119, 96, 0.15);
+  background: linear-gradient(135deg, #F4A261 0%, #E07A5F 50%, #81B29A 100%);
+  box-shadow: 0 20px 45px rgba(224, 122, 95, 0.2);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -401,8 +402,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   background: #FFF;
-  border: 1px solid var(--accent-rose-soft);
-  box-shadow: 0 6px 20px rgba(217, 119, 96, 0.15);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.18);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   color: var(--text-main);
@@ -416,7 +417,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--border-card);
   backdrop-filter: var(--blur-glass);
   padding: 1.1rem 2rem;
@@ -451,7 +452,7 @@ body {
 .pill-divider {
   width: 1px;
   height: 35px;
-  background: rgba(212, 143, 116, 0.25);
+  background: rgba(224, 122, 95, 0.25);
 }
 
 .hero-cta-group {
@@ -475,7 +476,7 @@ body {
 }
 
 .time-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--border-card);
   backdrop-filter: var(--blur-glass);
   border-radius: 22px;
@@ -490,7 +491,7 @@ body {
   font-family: var(--font-serif);
   font-size: 3.2rem;
   font-weight: 700;
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
   line-height: 1;
   margin-bottom: 0.3rem;
 }
@@ -524,8 +525,8 @@ body {
   top: 1.5rem;
   right: 1.5rem;
   background: var(--accent-blush);
-  border: 1px solid var(--accent-rose-soft);
-  color: var(--accent-rose);
+  border: 1px solid var(--accent-peach);
+  color: var(--accent-sunset);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.35rem 0.9rem;
@@ -547,18 +548,18 @@ body {
 
 .event-date {
   font-size: 1.1rem;
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
   font-weight: 600;
   margin-bottom: 1.2rem;
 }
 
 .event-location {
-  background: rgba(250, 247, 242, 0.8);
+  background: rgba(250, 245, 239, 0.85);
   border-radius: 14px;
   padding: 1rem;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
-  border: 1px solid rgba(226, 176, 76, 0.15);
+  border: 1px solid rgba(224, 122, 95, 0.18);
 }
 
 .event-location strong {
@@ -626,23 +627,23 @@ body {
 
 .cal-option-btn:hover {
   background: var(--accent-blush);
-  border-color: var(--accent-rose);
+  border-color: var(--accent-sunset);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(217, 119, 96, 0.15);
+  box-shadow: 0 8px 25px rgba(224, 122, 95, 0.18);
 }
 
 .cal-icon {
   font-size: 1.8rem;
 }
 
-/* Foodie & Sports Interest Highlights */
+/* Foodie, Arsenal & Botanical Interests */
 .foodie-section {
   padding: 6rem 1.5rem;
 }
 
 .interests-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -660,13 +661,26 @@ body {
 .interest-card h4 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
   margin-bottom: 0.5rem;
 }
 
 .interest-card p {
   color: var(--text-muted);
   font-size: 0.95rem;
+}
+
+/* Special Arsenal / Gunners Badge */
+.arsenal-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #D90429;
+  background: rgba(217, 4, 41, 0.08);
+  border: 1px solid rgba(217, 4, 41, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  margin-top: 0.5rem;
 }
 
 .foodie-recommend-box {
@@ -695,7 +709,7 @@ body {
 
 .form-input {
   background: #FFF;
-  border: 1px solid rgba(212, 143, 116, 0.3);
+  border: 1px solid rgba(224, 122, 95, 0.3);
   border-radius: 14px;
   padding: 0.9rem 1.2rem;
   color: var(--text-main);
@@ -709,8 +723,8 @@ body {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--accent-rose);
-  box-shadow: 0 0 12px rgba(217, 119, 96, 0.2);
+  border-color: var(--accent-sunset);
+  box-shadow: 0 0 12px rgba(224, 122, 95, 0.22);
 }
 
 .form-feedback {
@@ -761,7 +775,7 @@ body {
 }
 
 .travel-card li strong {
-  color: var(--accent-rose);
+  color: var(--accent-sunset);
 }
 
 .travel-card p {
@@ -820,15 +834,15 @@ select.form-input option {
 
 /* Footer */
 .footer {
-  border-top: 1px solid rgba(226, 176, 76, 0.2);
+  border-top: 1px solid rgba(224, 122, 95, 0.2);
   padding: 3.5rem 1.5rem;
-  background: rgba(250, 247, 242, 0.95);
+  background: rgba(250, 245, 239, 0.95);
 }
 
 .footer-names {
   font-family: var(--font-serif);
   font-size: 1.7rem;
-  color: var(--accent-gold);
+  color: var(--accent-sunset);
   margin-bottom: 0.4rem;
 }
 
@@ -879,10 +893,10 @@ select.form-input option {
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(250, 247, 242, 0.98);
+    background: rgba(250, 245, 239, 0.98);
     backdrop-filter: var(--blur-glass);
     flex-direction: column;
     padding: 1.5rem;
-    border-bottom: 1px solid rgba(212, 143, 116, 0.2);
+    border-bottom: 1px solid rgba(224, 122, 95, 0.2);
   }
 }
