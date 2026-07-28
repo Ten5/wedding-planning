@@ -533,6 +533,80 @@ body {
   white-space: nowrap;
 }
 
+/* WhatsApp Card Section */
+.whatsapp-section {
+  padding: 6rem 1.5rem;
+}
+
+.whatsapp-hero-box {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.whatsapp-flex-layout {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.whatsapp-card-preview {
+  flex: 1;
+  min-width: 260px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.whatsapp-img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--border-card);
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.whatsapp-img:hover {
+  transform: scale(1.03);
+}
+
+.whatsapp-card-info {
+  flex: 1.4;
+  min-width: 300px;
+}
+
+.whatsapp-card-info h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.whatsapp-card-info p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-feature-list {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-main);
+  font-size: 0.98rem;
+}
+
+.feature-item span {
+  font-size: 1.3rem;
+}
+
 /* Photo Gallery Section */
 .gallery-section {
   padding: 6rem 1.5rem;
@@ -1053,6 +1127,10 @@ select.form-input option {
   }
   .couple-photo {
     height: 290px;
+  }
+  .whatsapp-flex-layout {
+    flex-direction: column;
+    gap: 1.5rem;
   }
   .hero-details-pill {
     flex-direction: column;
