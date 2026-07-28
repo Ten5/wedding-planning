@@ -533,6 +533,71 @@ body {
   white-space: nowrap;
 }
 
+/* Photo Gallery Section */
+.gallery-section {
+  padding: 6rem 1.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.gallery-card {
+  padding: 1.2rem;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-photo-frame {
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.gallery-photo {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover .gallery-photo {
+  transform: scale(1.05);
+}
+
+.gallery-caption strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.gallery-caption small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.foodie-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: var(--accent-badge-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 0.3rem;
+}
+
 /* Hero Details Pill */
 .hero-details-pill {
   display: inline-flex;

@@ -3,24 +3,27 @@ import confetti from 'canvas-confetti';
 // Target Wedding Date: November 12, 2026 10:00:00 AM PST
 const WEDDING_DATE = new Date('2026-11-12T10:00:00-08:00');
 
-// Theme Configurations for V1, V2, V3
+// Theme Configurations for V1, V2, V3 with Dynamic Photos
 const THEME_CONFIGS = {
   v1: {
     heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
     heroSubtitle: "Are getting married! Join us for a celebratory weekend of love, golden light, and epic feasts.",
-    photoBadge: "🍣 Feasts, Blooms & Sweet Moments",
+    photoBadge: "🌅 #DoRiTales • Golden Hour & Sunset Vistas",
+    heroPhoto: "./images/moment_lakeside_sunset.jpg",
     confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   },
   v2: {
     heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
     heroSubtitle: "Are getting married! An elegant, ultra-chic indoor celebration of our journey together.",
-    photoBadge: "🥂 Modern Elegance & Gourmet Feasts",
+    photoBadge: "✨ #DoRiTales • Park Strolls & City Lights",
+    heroPhoto: "./images/moment_city_park.jpg",
     confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
   },
   v3: {
     heroBadge: "🍷 ROMANTIC SUNSET & CULINARY FEASTS 🍣",
-    heroSubtitle: "Are getting married! A cozy candlelight celebration centered around fine food, blooms & love.",
-    photoBadge: "🕯️ Fine Wine, Sushi Feasts & Loved Ones",
+    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
+    photoBadge: "🍱 #DoRiTales • Hibachi & Sushi Food Dates",
+    heroPhoto: "./images/hero_food.jpg",
     confettiColors: ['#B85B6C', '#7A2638', '#D49A36', '#F8E3E6', '#FAF2F3']
   }
 };
@@ -71,10 +74,12 @@ function initThemeSwitcher() {
     const heroBadge = document.getElementById('hero-badge-tag');
     const heroSubtitle = document.getElementById('hero-subtitle-text');
     const photoBadge = document.getElementById('photo-badge-text');
+    const heroPhoto = document.getElementById('hero-photo');
 
     if (heroBadge) heroBadge.innerHTML = `<span>${cfg.heroBadge}</span>`;
     if (heroSubtitle) heroSubtitle.textContent = cfg.heroSubtitle;
     if (photoBadge) photoBadge.innerHTML = `<span>${cfg.photoBadge}</span>`;
+    if (heroPhoto && cfg.heroPhoto) heroPhoto.src = cfg.heroPhoto;
   }
 }
 
