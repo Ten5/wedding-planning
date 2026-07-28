@@ -6,10 +6,10 @@
   <title>#DoRiTales | Save the Date | Tarunima &amp; Subhayu</title>
   <meta name="description" content="Save the Date for Tarunima &amp; Subhayu's Wedding! #DoRiTales • November 12 &amp; 13, 2026 • San Jose / South Bay Area, CA.">
   
-  <!-- OpenGraph Meta Tags for sharing on WhatsApp / iMessage -->
+  <!-- OpenGraph Meta Tags for sharing -->
   <meta property="og:title" content="#DoRiTales: Tarunima &amp; Subhayu Are Getting Married!">
   <meta property="og:description" content="Nov 12 Wedding • Nov 13 Reception • San Jose / South Bay Area, CA. Save the date and join #DoRiTales!">
-  <meta property="og:image" content="./images/whatsapp_save_the_date_card_scannable.jpg">
+  <meta property="og:image" content="./images/moment_lakeside_sunset.jpg">
   <meta property="og:type" content="website">
 
   <!-- Google Fonts: Cormorant Garamond, Cinzel, Great Vibes, Sacramento, Outfit -->
@@ -48,11 +48,18 @@
     <div class="glow-orb orb-3"></div>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar with Monogram Logo -->
   <nav class="navbar" id="main-nav">
     <div class="nav-container">
-      <!-- Top Left Nicknames: Rini & Dodo -->
-      <a href="#hero" class="nav-logo" id="nav-brand-logo">Rini &amp; Dodo <span style="font-size:0.8em; opacity:0.85; font-weight:400;">#DoRiTales</span></a>
+      <!-- Top Left Monogram Logo + Nicknames: Rini & Dodo -->
+      <a href="#hero" class="nav-brand-wrap" id="nav-brand-logo">
+        <img src="./images/logo_monogram.jpg" alt="R &amp; D Monogram Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="brand-names">Rini &amp; Dodo</span>
+          <span class="brand-hashtag">#DoRiTales</span>
+        </div>
+      </a>
+
       <ul class="nav-links">
         <li><a href="#schedule">Dates &amp; Events</a></li>
         <li><a href="#calendar">Add to Calendar</a></li>
@@ -70,9 +77,15 @@
   </nav>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH MONOGRAM LOGO EMBLEM -->
     <section class="hero-section" id="hero">
       <div class="hero-content">
+        
+        <!-- Luxury Monogram Logo Emblem in Hero -->
+        <div class="hero-logo-emblem">
+          <img src="./images/logo_monogram.jpg" alt="Tarunima &amp; Subhayu Monogram Emblem" class="hero-emblem-img">
+        </div>
+
         <div class="save-tag" id="hero-badge-tag">
           <span>✨ SAVE THE DATE • #DoRiTales ✨</span>
         </div>
@@ -198,7 +211,7 @@
       </div>
     </section>
 
-    <!-- OUR MOMENTS PHOTO GALLERY SECTION -->
+    <!-- OUR MOMENTS PHOTO GALLERY SECTION (EVEN 6 SYMMETRICAL GRID) -->
     <section class="gallery-section" id="gallery">
       <div class="container">
         <div class="text-center">
@@ -209,8 +222,8 @@
           </p>
         </div>
 
-        <div class="gallery-grid">
-          <!-- Photo 1 -->
+        <div class="gallery-grid symmetrical-6-grid">
+          <!-- Photo 1: Sunset Waterside Walk -->
           <div class="gallery-card glass-card">
             <div class="gallery-photo-frame">
               <img src="./images/moment_lakeside_sunset.jpg" alt="Lakeside Sunset Walk" class="gallery-photo">
@@ -221,7 +234,7 @@
             </div>
           </div>
 
-          <!-- Photo 2 -->
+          <!-- Photo 2: Foodie Date -->
           <div class="gallery-card glass-card">
             <div class="gallery-photo-frame">
               <img src="./images/hero_food.jpg" alt="Hibachi & Sushi Food Date" class="gallery-photo">
@@ -233,7 +246,7 @@
             </div>
           </div>
 
-          <!-- Photo 3 -->
+          <!-- Photo 3: City Park -->
           <div class="gallery-card glass-card">
             <div class="gallery-photo-frame">
               <img src="./images/moment_city_park.jpg" alt="City Park & Architecture Walk" class="gallery-photo">
@@ -244,7 +257,7 @@
             </div>
           </div>
 
-          <!-- Photo 4 -->
+          <!-- Photo 4: Fun Travels -->
           <div class="gallery-card glass-card">
             <div class="gallery-photo-frame">
               <img src="./images/moment_travel_fun.jpg" alt="Fun Travels & Double Decker Bus" class="gallery-photo">
@@ -255,7 +268,7 @@
             </div>
           </div>
 
-          <!-- Photo 5 -->
+          <!-- Photo 5: Lake Vista -->
           <div class="gallery-card glass-card">
             <div class="gallery-photo-frame">
               <img src="./images/moment_lake_vista.jpg" alt="Blue Skies & Lake Vistas" class="gallery-photo">
@@ -265,34 +278,43 @@
               <small>Sunny lake days with cool breeze</small>
             </div>
           </div>
+
+          <!-- Photo 6: Ocean & Beach Waterfront (New 6th Photo for Symmetry) -->
+          <div class="gallery-card glass-card">
+            <div class="gallery-photo-frame">
+              <img src="./images/moment_ocean_beach.jpg" alt="Ocean Coastline & Beach Selfie" class="gallery-photo">
+            </div>
+            <div class="gallery-caption">
+              <strong>🏖️ Ocean Coastline &amp; Beach Breeze</strong>
+              <small>Cool ocean waves &amp; cozy coastline dates</small>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ADD TO CALENDAR SECTION -->
+    <!-- ADD TO CALENDAR SECTION (SYMMETRICAL 2-BUTTON GOOGLE & APPLE LAYOUT) -->
     <section class="calendar-section" id="calendar">
       <div class="container text-center">
         <div class="glass-card calendar-hero-card">
           <span class="card-sparkle">🗓️</span>
           <h2>Don't Forget to Block Your Calendar!</h2>
-          <p>Choose your preferred calendar service below to instantly save our dates.</p>
+          <p>Save our dates with one click directly into your calendar app.</p>
           
-          <div class="calendar-options-grid">
-            <button class="cal-option-btn" id="btn-gcal">
+          <div class="symmetrical-cal-grid">
+            <button class="cal-option-btn cal-btn-symmetrical" id="btn-gcal">
               <span class="cal-icon">🌐</span>
-              <span>Google Calendar</span>
+              <div class="cal-text-wrap">
+                <strong>Google Calendar</strong>
+                <small>One-click instant sync</small>
+              </div>
             </button>
-            <button class="cal-option-btn" id="btn-ical">
+            <button class="cal-option-btn cal-btn-symmetrical" id="btn-ical">
               <span class="cal-icon">🍏</span>
-              <span>Apple Calendar (.ics)</span>
-            </button>
-            <button class="cal-option-btn" id="btn-outlook">
-              <span class="cal-icon">📧</span>
-              <span>Outlook Calendar</span>
-            </button>
-            <button class="cal-option-btn" id="btn-yahoo">
-              <span class="cal-icon">💜</span>
-              <span>Yahoo Calendar</span>
+              <div class="cal-text-wrap">
+                <strong>Apple Calendar (.ics)</strong>
+                <small>For iPhone, Mac &amp; iOS</small>
+              </div>
             </button>
           </div>
         </div>
@@ -440,9 +462,10 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER WITH MONOGRAM EMBLEM -->
   <footer class="footer">
     <div class="container text-center">
+      <img src="./images/logo_monogram.jpg" alt="R &amp; D Logo" class="footer-logo-img">
       <p class="footer-names">Tarunima &amp; Subhayu</p>
       <p class="footer-date">#DoRiTales • Nov 12 &amp; 13, 2026 • San Jose / South Bay Area, CA</p>
       <p class="footer-credit">Made with ❤️ for family &amp; friends</p>

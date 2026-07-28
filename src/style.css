@@ -244,7 +244,7 @@ body {
   font-family: var(--font-script);
 }
 
-/* Navigation Bar */
+/* Navigation Bar with Logo */
 .navbar {
   position: relative;
   width: 100%;
@@ -270,13 +270,44 @@ body {
   align-items: center;
 }
 
-.nav-logo {
+.nav-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.nav-brand-wrap:hover .nav-logo-img {
+  transform: rotate(5deg) scale(1.06);
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-names {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent-primary);
-  text-decoration: none;
-  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+.brand-hashtag {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .nav-links {
@@ -428,7 +459,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  padding: 5rem 1.5rem 5rem 1.5rem;
+  padding: 4rem 1.5rem 5rem 1.5rem;
   text-align: center;
   min-height: 85vh;
   display: flex;
@@ -439,6 +470,24 @@ body {
 .hero-content {
   max-width: 860px;
   margin: 0 auto;
+}
+
+.hero-logo-emblem {
+  margin-bottom: 1.2rem;
+}
+
+.hero-emblem-img {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-secondary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease;
+}
+
+.hero-emblem-img:hover {
+  transform: scale(1.08);
 }
 
 .save-tag {
@@ -533,88 +582,14 @@ body {
   white-space: nowrap;
 }
 
-/* WhatsApp Card Section */
-.whatsapp-section {
-  padding: 6rem 1.5rem;
-}
-
-.whatsapp-hero-box {
-  max-width: 950px;
-  margin: 0 auto;
-}
-
-.whatsapp-flex-layout {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.whatsapp-card-preview {
-  flex: 1;
-  min-width: 260px;
-  max-width: 320px;
-  margin: 0 auto;
-}
-
-.whatsapp-img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  border: 2px solid var(--border-card);
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.whatsapp-img:hover {
-  transform: scale(1.03);
-}
-
-.whatsapp-card-info {
-  flex: 1.4;
-  min-width: 300px;
-}
-
-.whatsapp-card-info h2 {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  color: var(--text-main);
-}
-
-.whatsapp-card-info p {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  margin-bottom: 1.5rem;
-}
-
-.card-feature-list {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--text-main);
-  font-size: 0.98rem;
-}
-
-.feature-item span {
-  font-size: 1.3rem;
-}
-
-/* Photo Gallery Section */
+/* Photo Gallery Section (Symmetrical 6 Grid: 3 columns x 2 rows) */
 .gallery-section {
   padding: 6rem 1.5rem;
 }
 
-.gallery-grid {
+.symmetrical-6-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
 }
 
@@ -833,13 +808,13 @@ body {
   font-size: 0.85rem;
 }
 
-/* Add to Calendar Section */
+/* Add to Calendar Section (Symmetrical 2-Column Grid for Google & Apple) */
 .calendar-section {
   padding: 4rem 1.5rem;
 }
 
 .calendar-hero-card {
-  max-width: 850px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -861,39 +836,50 @@ body {
   margin-bottom: 2rem;
 }
 
-.calendar-options-grid {
+.symmetrical-cal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
-.cal-option-btn {
+.cal-btn-symmetrical {
   background: #FFF;
   border: 1px solid var(--border-card);
-  border-radius: 18px;
-  padding: 1.2rem 1rem;
+  border-radius: 20px;
+  padding: 1.4rem 1.2rem;
   color: var(--text-main);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1rem;
+  text-align: left;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-.cal-option-btn:hover {
+.cal-btn-symmetrical:hover {
   background: var(--accent-badge-bg);
   border-color: var(--accent-primary);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
+.cal-text-wrap strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.cal-text-wrap small {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
 .cal-icon {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
 }
 
 /* Foodie & Arsenal Interests */
@@ -1098,6 +1084,15 @@ select.form-input option {
   background: var(--bg-main);
 }
 
+.footer-logo-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-primary);
+  margin-bottom: 0.8rem;
+}
+
 .footer-names {
   font-family: var(--font-serif);
   font-size: 1.7rem;
@@ -1117,6 +1112,12 @@ select.form-input option {
 }
 
 /* Responsive Media Queries */
+@media (max-width: 900px) {
+  .symmetrical-6-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .switcher-container {
     flex-direction: column;
@@ -1128,9 +1129,11 @@ select.form-input option {
   .couple-photo {
     height: 290px;
   }
-  .whatsapp-flex-layout {
-    flex-direction: column;
-    gap: 1.5rem;
+  .symmetrical-6-grid {
+    grid-template-columns: 1fr;
+  }
+  .symmetrical-cal-grid {
+    grid-template-columns: 1fr;
   }
   .hero-details-pill {
     flex-direction: column;
