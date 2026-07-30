@@ -3,25 +3,29 @@ import confetti from 'canvas-confetti';
 // Target Wedding Date: November 12, 2026 10:00:00 AM PST
 const WEDDING_DATE = new Date('2026-11-12T10:00:00-08:00');
 
+// Google Apps Script Web App URL for Google Sheets RSVP Integration
+// Replace with your deployed Web App URL from Google Sheets
+let GOOGLE_SHEET_WEB_APP_URL = "";
+
 // Theme Configurations for V1, V2, V3 with Dynamic Photos
 const THEME_CONFIGS = {
   v1: {
     heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
-    heroSubtitle: "Are getting married! Join us for a celebratory weekend of love, golden light, and epic feasts.",
+    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
     photoBadge: "🌅 #DoRiTales • Golden Hour & Sunset Vistas",
     heroPhoto: "./images/moment_lakeside_sunset.jpg",
     confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   },
   v2: {
     heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
-    heroSubtitle: "Are getting married! An elegant, ultra-chic indoor celebration of our journey together.",
+    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
     photoBadge: "✨ #DoRiTales • Park Strolls & City Lights",
     heroPhoto: "./images/moment_city_park.jpg",
     confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
   },
   v3: {
     heroBadge: "🍷 ROMANTIC SUNSET & CULINARY FEASTS 🍣",
-    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
+    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
     photoBadge: "🍱 #DoRiTales • Hibachi & Sushi Food Dates",
     heroPhoto: "./images/hero_food.jpg",
     confettiColors: ['#B85B6C', '#7A2638', '#D49A36', '#F8E3E6', '#FAF2F3']
@@ -169,8 +173,6 @@ const EVENT_DETAILS = {
 function initCalendarHandlers() {
   const gcalBtn = document.getElementById('btn-gcal');
   const icalBtn = document.getElementById('btn-ical');
-  const outlookBtn = document.getElementById('btn-outlook');
-  const yahooBtn = document.getElementById('btn-yahoo');
 
   document.querySelectorAll('.cal-trigger-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -193,20 +195,6 @@ function initCalendarHandlers() {
       downloadIcs(EVENT_DETAILS.wedding);
     });
   }
-
-  if (outlookBtn) {
-    outlookBtn.addEventListener('click', () => {
-      triggerConfetti();
-      openOutlookCalendar(EVENT_DETAILS.wedding);
-    });
-  }
-
-  if (yahooBtn) {
-    yahooBtn.addEventListener('click', () => {
-      triggerConfetti();
-      openYahooCalendar(EVENT_DETAILS.wedding);
-    });
-  }
 }
 
 function openGoogleCalendar(ev) {
@@ -215,27 +203,6 @@ function openGoogleCalendar(ev) {
     `&dates=${ev.startDate}/${ev.endDate}` +
     `&details=${encodeURIComponent(ev.description)}` +
     `&location=${encodeURIComponent(ev.location)}`;
-  window.open(url, '_blank');
-}
-
-function openOutlookCalendar(ev) {
-  const url = `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose` +
-    `&rru=addevent` +
-    `&subject=${encodeURIComponent(ev.title)}` +
-    `&body=${encodeURIComponent(ev.description)}` +
-    `&location=${encodeURIComponent(ev.location)}` +
-    `&startdt=${ev.isoStart}` +
-    `&enddt=${ev.isoEnd}`;
-  window.open(url, '_blank');
-}
-
-function openYahooCalendar(ev) {
-  const url = `https://calendar.yahoo.com/?v=60` +
-    `&title=${encodeURIComponent(ev.title)}` +
-    `&st=${ev.startDate}` +
-    `&et=${ev.endDate}` +
-    `&desc=${encodeURIComponent(ev.description)}` +
-    `&in_loc=${encodeURIComponent(ev.location)}`;
   window.open(url, '_blank');
 }
 
@@ -279,9 +246,27 @@ function initFoodieForm() {
 
     if (!guestName || !spotName) return;
 
+    const payload = {
+      formType: 'recommendation',
+      fullName: guestName,
+      spotName: spotName,
+      timestamp: new Date().toLocaleString()
+    };
+
+    // Save locally as backup
     const saved = JSON.parse(localStorage.getItem('food_suggestions') || '[]');
-    saved.push({ name: guestName, spot: spotName, date: new Date().toISOString() });
+    saved.push(payload);
     localStorage.setItem('food_suggestions', JSON.stringify(saved));
+
+    // Send to Google Sheets if Web App URL is configured
+    if (GOOGLE_SHEET_WEB_APP_URL) {
+      fetch(GOOGLE_SHEET_WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(err => console.log('Google Sheets Sync Note:', err));
+    }
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
@@ -306,9 +291,29 @@ function initRsvpForm() {
 
     if (!fullName || !email) return;
 
+    const payload = {
+      formType: 'rsvp',
+      fullName: fullName,
+      email: email,
+      attendance: attendance,
+      notes: notes,
+      timestamp: new Date().toLocaleString()
+    };
+
+    // Save locally as backup
     const rsvpEntries = JSON.parse(localStorage.getItem('pre_rsvp_entries') || '[]');
-    rsvpEntries.push({ fullName, email, attendance, notes, timestamp: new Date().toISOString() });
+    rsvpEntries.push(payload);
     localStorage.setItem('pre_rsvp_entries', JSON.stringify(rsvpEntries));
+
+    // Send to Google Sheets if Web App URL is configured
+    if (GOOGLE_SHEET_WEB_APP_URL) {
+      fetch(GOOGLE_SHEET_WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(err => console.log('Google Sheets Sync Note:', err));
+    }
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
