@@ -41,15 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initRsvpForm();
 });
 
-/* Theme Switcher Handler for V1, V2, V3 - Defaults to V2 */
+/* Theme Switcher Handler - Explicitly Defaults to V2 */
 function initThemeSwitcher() {
   const tabs = document.querySelectorAll('.theme-tab-btn');
   const htmlEl = document.documentElement;
 
+  // Check if URL hash explicitly specifies v1 or v3; otherwise always default to v2
   const hash = window.location.hash.replace('#', '').toLowerCase();
-  const savedVersion = hash && THEME_CONFIGS[hash] ? hash : (localStorage.getItem('selected_theme_version') || 'v2');
+  const activeVersion = (hash === 'v1' || hash === 'v3') ? hash : 'v2';
 
-  setThemeVersion(savedVersion);
+  setThemeVersion(activeVersion);
 
   tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
