@@ -11,21 +11,21 @@ let GOOGLE_SHEET_WEB_APP_URL = "";
 const THEME_CONFIGS = {
   v1: {
     heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
-    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
-    photoBadge: "🌅 #DoRiTales • Golden Hour & Sunset Vistas",
+    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
+    photoBadge: "🌅 #DoRiTales • Golden Hour Moments & Sunset Vistas",
     heroPhoto: "./images/moment_lakeside_sunset.jpg",
     confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   },
   v2: {
     heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
-    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
-    photoBadge: "✨ #DoRiTales • Park Strolls & City Lights",
+    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
+    photoBadge: "✨ #DoRiTales • City Walks & Historic Architecture",
     heroPhoto: "./images/moment_city_park.jpg",
     confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
   },
   v3: {
-    heroBadge: "🍷 ROMANTIC SUNSET & CULINARY FEASTS 🍣",
-    heroSubtitle: "Together with their families, Tarunima (Rini) & Subhayu (Dodo) joyfully invite you to celebrate their wedding weekend. Save the dates for two unforgettable days of love, blooms, and gourmet feasts in Silicon Valley.",
+    heroBadge: "🍷 ROMANTIC CALLIGRAPHY & FEASTS 🍣",
+    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
     photoBadge: "🍱 #DoRiTales • Hibachi & Sushi Food Dates",
     heroPhoto: "./images/hero_food.jpg",
     confettiColors: ['#B85B6C', '#7A2638', '#D49A36', '#F8E3E6', '#FAF2F3']
@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initRsvpForm();
 });
 
-/* Theme Switcher Handler for V1, V2, V3 */
+/* Theme Switcher Handler for V1, V2, V3 - Defaults to V2 */
 function initThemeSwitcher() {
   const tabs = document.querySelectorAll('.theme-tab-btn');
   const htmlEl = document.documentElement;
 
   const hash = window.location.hash.replace('#', '').toLowerCase();
-  const savedVersion = hash && THEME_CONFIGS[hash] ? hash : (localStorage.getItem('selected_theme_version') || 'v1');
+  const savedVersion = hash && THEME_CONFIGS[hash] ? hash : (localStorage.getItem('selected_theme_version') || 'v2');
 
   setThemeVersion(savedVersion);
 
@@ -60,7 +60,7 @@ function initThemeSwitcher() {
   });
 
   function setThemeVersion(version) {
-    if (!THEME_CONFIGS[version]) version = 'v1';
+    if (!THEME_CONFIGS[version]) version = 'v2';
 
     htmlEl.setAttribute('data-theme', version);
     localStorage.setItem('selected_theme_version', version);
@@ -151,9 +151,9 @@ function initCountdown() {
 /* Calendar Event Data & Link Generators (Bride First) */
 const EVENT_DETAILS = {
   wedding: {
-    title: "Tarunima (Rini) & Subhayu (Dodo) - Wedding",
-    description: "Save the Date for Tarunima & Subhayu's Wedding Ceremony in San Jose / South Bay Area, CA! Formal invitations with exact venue and timing to follow.",
-    location: "San Jose / South Bay Area, CA",
+    title: "Tarunima (Rini) & Subhayu (Dodo) - Wedding Ceremony",
+    description: "Save the Date for Tarunima & Subhayu's Wedding Ceremony in Mountain View, CA! Formal invitations with exact venue and timing to follow.",
+    location: "Mountain View, CA",
     startDate: "20261112T100000",
     endDate: "20261112T160000",
     isoStart: "2026-11-12T10:00:00-08:00",
@@ -210,7 +210,7 @@ function downloadIcs(ev) {
   const icsData = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Rini & Dodo Wedding//Save The Date//EN',
+    'PRODID:-//Subhayu & Tarunima Wedding//Save The Date//EN',
     'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
     `SUMMARY:${ev.title}`,
@@ -270,14 +270,14 @@ function initFoodieForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to Rini & Dodo's bucket list! ✨`;
+    feedback.textContent = `Thank you ${guestName}! We added "${spotName}" to our bucket list! ✨`;
     form.reset();
   });
 }
 
-/* Pre-RSVP Form Handler */
+/* RSVP Form Handler */
 function initRsvpForm() {
-  const form = document.getElementById('pre-rsvp-form');
+  const form = document.getElementById('rsvp-form');
   const feedback = document.getElementById('rsvp-feedback');
 
   if (!form) return;
@@ -301,9 +301,9 @@ function initRsvpForm() {
     };
 
     // Save locally as backup
-    const rsvpEntries = JSON.parse(localStorage.getItem('pre_rsvp_entries') || '[]');
+    const rsvpEntries = JSON.parse(localStorage.getItem('rsvp_entries') || '[]');
     rsvpEntries.push(payload);
-    localStorage.setItem('pre_rsvp_entries', JSON.stringify(rsvpEntries));
+    localStorage.setItem('rsvp_entries', JSON.stringify(rsvpEntries));
 
     // Send to Google Sheets if Web App URL is configured
     if (GOOGLE_SHEET_WEB_APP_URL) {
@@ -317,7 +317,7 @@ function initRsvpForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Woohoo! Thank you ${fullName}! Your contact details have been saved. Rini & Dodo will keep you posted! 💌✨`;
+    feedback.textContent = `Thank you ${fullName}! Your RSVP details have been received. We can't wait to celebrate with you! 💌✨`;
     form.reset();
   });
 }
@@ -328,6 +328,6 @@ function triggerConfetti(colors) {
     particleCount: 85,
     spread: 75,
     origin: { y: 0.65 },
-    colors: colors || ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
+    colors: colors || ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
   });
 }
