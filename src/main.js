@@ -119,7 +119,7 @@ function initHeroSlideshow() {
     stopAutoplay();
     slideInterval = setInterval(() => {
       showSlide(currentSlideIndex + 1);
-    }, 4500);
+    }, 7500);
   }
 
   function stopAutoplay() {
