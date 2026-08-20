@@ -7,13 +7,11 @@ const WEDDING_DATE = new Date('2026-11-12T10:00:00-08:00');
 // Replace with your deployed Web App URL from Google Sheets
 let GOOGLE_SHEET_WEB_APP_URL = "";
 
-// Theme Configurations for V1, V2, V3 with Dynamic Photos
+// Theme Configurations for V1 and V2
 const THEME_CONFIGS = {
   v1: {
     heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
     heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
-    photoBadge: "🌅 #DoRiTales • Golden Hour Moments & Sunset Vistas",
-    heroPhoto: "./images/moment_lakeside_sunset.jpg",
     confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   },
   v2: {
@@ -22,13 +20,6 @@ const THEME_CONFIGS = {
     photoBadge: "✨ #DoRiTales • City Walks & Historic Architecture",
     heroPhoto: "./images/moment_city_park.jpg",
     confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
-  },
-  v3: {
-    heroBadge: "🍷 ROMANTIC CALLIGRAPHY & FEASTS 🍣",
-    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
-    photoBadge: "🍱 #DoRiTales • Hibachi & Sushi Food Dates",
-    heroPhoto: "./images/hero_food.jpg",
-    confettiColors: ['#B85B6C', '#7A2638', '#D49A36', '#F8E3E6', '#FAF2F3']
   }
 };
 
@@ -39,16 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendarHandlers();
   initFoodieForm();
   initRsvpForm();
+  initHeroSlideshow();
 });
 
-/* Theme Switcher Handler - Explicitly Defaults to V2 */
+/* Theme Switcher Handler - Defaults to V2 */
 function initThemeSwitcher() {
   const tabs = document.querySelectorAll('.theme-tab-btn');
   const htmlEl = document.documentElement;
 
-  // Check if URL hash explicitly specifies v1 or v3; otherwise always default to v2
+  // Check if URL hash explicitly specifies v1; otherwise default to v2
   const hash = window.location.hash.replace('#', '').toLowerCase();
-  const activeVersion = (hash === 'v1' || hash === 'v3') ? hash : 'v2';
+  const activeVersion = (hash === 'v1') ? 'v1' : 'v2';
 
   setThemeVersion(activeVersion);
 
@@ -56,7 +48,7 @@ function initThemeSwitcher() {
     tab.addEventListener('click', (e) => {
       const version = e.currentTarget.dataset.version;
       setThemeVersion(version);
-      triggerConfetti(THEME_CONFIGS[version].confettiColors);
+      triggerConfetti(THEME_CONFIGS[version]?.confettiColors);
     });
   });
 
@@ -83,9 +75,90 @@ function initThemeSwitcher() {
 
     if (heroBadge) heroBadge.innerHTML = `<span>${cfg.heroBadge}</span>`;
     if (heroSubtitle) heroSubtitle.textContent = cfg.heroSubtitle;
-    if (photoBadge) photoBadge.innerHTML = `<span>${cfg.photoBadge}</span>`;
+    if (photoBadge && cfg.photoBadge) photoBadge.innerHTML = `<span>${cfg.photoBadge}</span>`;
     if (heroPhoto && cfg.heroPhoto) heroPhoto.src = cfg.heroPhoto;
   }
+}
+
+/* Picture Slideshow for V1 */
+let slideInterval = null;
+let currentSlideIndex = 0;
+
+function initHeroSlideshow() {
+  const slides = document.querySelectorAll('.hero-slideshow-container .slide');
+  const dots = document.querySelectorAll('.slide-indicators .dot');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+  const slideshowEl = document.getElementById('hero-slideshow');
+
+  if (!slides.length) return;
+
+  function showSlide(index) {
+    if (index >= slides.length) currentSlideIndex = 0;
+    else if (index < 0) currentSlideIndex = slides.length - 1;
+    else currentSlideIndex = index;
+
+    slides.forEach((slide, i) => {
+      if (i === currentSlideIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === currentSlideIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    slideInterval = setInterval(() => {
+      showSlide(currentSlideIndex + 1);
+    }, 4500);
+  }
+
+  function stopAutoplay() {
+    if (slideInterval) clearInterval(slideInterval);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSlide(currentSlideIndex - 1);
+      startAutoplay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSlide(currentSlideIndex + 1);
+      startAutoplay();
+    });
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const idx = parseInt(e.target.dataset.index, 10);
+      showSlide(idx);
+      startAutoplay();
+    });
+  });
+
+  if (slideshowEl) {
+    slideshowEl.addEventListener('mouseenter', stopAutoplay);
+    slideshowEl.addEventListener('mouseleave', startAutoplay);
+    slideshowEl.addEventListener('touchstart', stopAutoplay, { passive: true });
+    slideshowEl.addEventListener('touchend', startAutoplay, { passive: true });
+  }
+
+  showSlide(0);
+  startAutoplay();
 }
 
 /* Navbar Mobile Toggle & Scroll Effect */

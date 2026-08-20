@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Dodo & Rini Save the Date - 3 Distinct Theme Versions & Fonts System
+   Dodo & Rini Save the Date - Theme System & Slideshow
    ========================================================================== */
 
-/* --- VERSION 1: Golden Hour & Floral Elegance (Warm Classic Serif) --- */
+/* --- VERSION 1: Golden Hour & Floral Elegance (With Picture Slideshow) --- */
 :root, [data-theme="v1"] {
   --bg-main: #FAF5EF;
   --bg-card: rgba(255, 253, 249, 0.9);
@@ -58,35 +58,6 @@
   --orb-1-bg: radial-gradient(circle, rgba(197, 160, 89, 0.3) 0%, transparent 70%);
   --orb-2-bg: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
   --orb-3-bg: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
-}
-
-/* --- VERSION 3: Romantic Calligraphy & Feasts (Great Vibes Script) --- */
-[data-theme="v3"] {
-  --bg-main: #FAF2F3;
-  --bg-card: rgba(255, 250, 251, 0.92);
-  --bg-card-hover: #FFFFFF;
-  --border-card: rgba(184, 91, 108, 0.25);
-  --border-card-hover: rgba(184, 91, 108, 0.5);
-
-  --accent-primary: #B85B6C;
-  --accent-secondary: #7A2638;
-  --accent-gold: #D49A36;
-  --accent-badge-bg: #F8E3E6;
-
-  --text-main: #2D1A1E;
-  --text-muted: #664A50;
-  --text-dim: #94777D;
-
-  --font-serif: 'Great Vibes', cursive, 'Cormorant Garamond', serif;
-  --font-sans: 'Outfit', sans-serif;
-  --font-script: 'Great Vibes', cursive;
-
-  --shadow-glow: 0 10px 30px rgba(184, 91, 108, 0.22);
-  --shadow-card: 0 12px 35px rgba(122, 38, 56, 0.08);
-
-  --orb-1-bg: radial-gradient(circle, #E8A5B0 0%, transparent 70%);
-  --orb-2-bg: radial-gradient(circle, #F4C493 0%, transparent 70%);
-  --orb-3-bg: radial-gradient(circle, #B85B6C 0%, transparent 70%);
 }
 
 /* ==========================================================================
@@ -170,10 +141,10 @@ body {
 }
 
 .theme-tab-btn.active {
-  background: linear-gradient(135deg, #E07A5F, #F4A261);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: #FFF;
   border-color: transparent;
-  box-shadow: 0 0 12px rgba(224, 122, 95, 0.4);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 /* Ambient Floating Orbs */
@@ -471,6 +442,7 @@ body {
 .hero-content {
   max-width: 840px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .hero-logo-emblem {
@@ -520,12 +492,6 @@ body {
   white-space: nowrap;
 }
 
-[data-theme="v3"] .couple-names {
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  font-weight: 400;
-  line-height: 1.2;
-}
-
 .couple-names .ampersand {
   color: var(--accent-secondary);
   font-style: italic;
@@ -541,7 +507,7 @@ body {
   line-height: 1.6;
 }
 
-/* Hero Couple Photo Frame */
+/* V2 Single Hero Photo Frame */
 .couple-photo-wrapper {
   margin: 0 auto 2rem auto;
   max-width: 560px;
@@ -582,6 +548,198 @@ body {
   font-size: 0.88rem;
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* ==========================================================================
+   V1 HERO PICTURE SLIDESHOW STYLES
+   ========================================================================== */
+
+.slideshow-intro-wrap {
+  margin: 1rem auto 1.4rem auto;
+  max-width: 680px;
+}
+
+.slideshow-subtext {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.hero-slideshow-container {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto 2.2rem auto;
+}
+
+.slideshow-track {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+  animation: fadeInSlide 0.5s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-photo-frame {
+  position: relative;
+  border-radius: 26px;
+  padding: 10px;
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 50%, var(--border-card) 100%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.slide-caption-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  backdrop-filter: blur(16px);
+  padding: 1.1rem 1.4rem;
+  border-radius: 18px;
+  margin-top: 1rem;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.slide-title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+}
+
+.slide-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Slideshow Navigation Arrows */
+.slide-arrow {
+  position: absolute;
+  top: 180px;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1px solid var(--border-card);
+  color: var(--accent-primary);
+  font-size: 2rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.prev-btn {
+  left: -18px;
+}
+
+.next-btn {
+  right: -18px;
+}
+
+.slide-arrow:hover {
+  background: #FFF;
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Dot Indicators */
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-card);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--accent-primary);
+  width: 28px;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   THEME CONDITIONAL DISPLAY RULES (V1 vs V2)
+   ========================================================================== */
+
+/* V1: Show Slideshow in Hero, Hide Bottom Gallery */
+[data-theme="v1"] .slideshow-intro-wrap {
+  display: block;
+}
+
+[data-theme="v1"] .hero-slideshow-container {
+  display: block;
+}
+
+[data-theme="v1"] .hero-single-photo-wrap {
+  display: none;
+}
+
+[data-theme="v1"] .gallery-section {
+  display: none;
+}
+
+[data-theme="v1"] .nav-gallery-item {
+  display: none;
+}
+
+/* V2: Hide Slideshow, Show Single Hero Photo & Bottom Gallery Grid */
+[data-theme="v2"] .slideshow-intro-wrap {
+  display: none;
+}
+
+[data-theme="v2"] .hero-slideshow-container {
+  display: none;
+}
+
+[data-theme="v2"] .hero-single-photo-wrap {
+  display: block;
+}
+
+[data-theme="v2"] .gallery-section {
+  display: block;
+}
+
+[data-theme="v2"] .nav-gallery-item {
+  display: inline-block;
 }
 
 /* Hero Details Pill */
@@ -634,7 +792,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* Section Margins & Spacing (Compacted for compact mobile feel) */
+/* Section Margins & Spacing */
 .countdown-section {
   padding: 2.5rem 1.25rem;
 }
@@ -1037,7 +1195,7 @@ body {
   font-size: 0.92rem;
 }
 
-/* Pre-RSVP Section */
+/* RSVP Section */
 .rsvp-card {
   max-width: 720px;
   margin: 0 auto;
@@ -1117,7 +1275,7 @@ select.form-input option {
 }
 
 /* ==========================================================================
-   FLUID MOBILE SCREEN RESPONSIVENESS & ZERO-WASTE SPACE RULES
+   FLUID MOBILE SCREEN RESPONSIVENESS
    ========================================================================== */
 
 @media (max-width: 900px) {
@@ -1152,6 +1310,7 @@ select.form-input option {
     font-size: 1.05rem;
     margin-bottom: 1.5rem;
   }
+  
   .couple-photo-wrapper {
     margin-bottom: 1.6rem;
   }
@@ -1163,6 +1322,18 @@ select.form-input option {
     padding: 0.35rem 1rem;
     bottom: -12px;
   }
+
+  .slide-img {
+    height: 290px;
+  }
+  .slide-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.6rem;
+    top: 150px;
+  }
+  .prev-btn { left: -10px; }
+  .next-btn { right: -10px; }
 
   .glass-card {
     padding: 1.5rem 1.2rem;
@@ -1219,7 +1390,7 @@ select.form-input option {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   }
 
-  /* Compact section padding for mobile to eliminate white space */
+  /* Compact section padding for mobile */
   .countdown-section { padding: 2rem 1rem; }
   .events-section { padding: 3rem 1rem; }
   .gallery-section { padding: 3rem 1rem; }
@@ -1247,6 +1418,18 @@ select.form-input option {
   .couple-photo {
     height: 250px;
   }
+  .slide-img {
+    height: 240px;
+  }
+  .slide-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+    top: 125px;
+  }
+  .prev-btn { left: -6px; }
+  .next-btn { right: -6px; }
+
   .time-card {
     width: 75px;
     padding: 0.8rem 0.4rem;

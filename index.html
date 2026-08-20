@@ -25,7 +25,7 @@
 </head>
 <body>
 
-  <!-- Top Sticky Version Switcher Bar (V2 Default) -->
+  <!-- Top Sticky Version Switcher Bar (V2 Default, V1 with Slideshow) -->
   <div class="theme-switcher-bar" id="switcher-bar">
     <div class="switcher-container">
       <div class="switcher-title">
@@ -33,13 +33,10 @@
       </div>
       <div class="switcher-options">
         <button class="theme-tab-btn" data-version="v1" id="tab-v1">
-          🌅 V1: Golden Hour &amp; Floral
+          🌅 V1: Golden Hour &amp; Slideshow
         </button>
         <button class="theme-tab-btn active" data-version="v2" id="tab-v2">
           ✨ V2: Modern Minimalist Luxury (Selected)
-        </button>
-        <button class="theme-tab-btn" data-version="v3" id="tab-v3">
-          🍷 V3: Romantic Calligraphy &amp; Feasts
         </button>
       </div>
     </div>
@@ -67,7 +64,7 @@
       <ul class="nav-links">
         <li><a href="#schedule">Dates &amp; Events</a></li>
         <li><a href="#calendar">Add to Calendar</a></li>
-        <li><a href="#gallery">Our Moments</a></li>
+        <li class="nav-gallery-item"><a href="#gallery">Our Moments</a></li>
         <li><a href="#interests" id="nav-interests-link">Food &amp; Football</a></li>
         <li><a href="#travel">Travel Info</a></li>
         <li><a href="#rsvp" class="nav-btn">RSVP</a></li>
@@ -101,8 +98,100 @@
 
         <p class="hero-subtitle" id="hero-subtitle-text">Are getting married! A cozy celebration centered around fine food, blooms &amp; love.</p>
 
-        <!-- Featured Couple Hero Photo -->
-        <div class="couple-photo-wrapper">
+        <!-- V1: Slideshow Intro Subtext (Shown above slideshow in V1) -->
+        <div class="slideshow-intro-wrap" id="slideshow-intro">
+          <span class="section-tag font-alt">Our Journey</span>
+          <p class="slideshow-subtext">A glimpse into our favorite moments—from quiet waterside walks and scenic travels to culinary date nights and city strolls.</p>
+        </div>
+
+        <!-- V1: Full Picture Slideshow with Captions -->
+        <div class="hero-slideshow-container" id="hero-slideshow">
+          <div class="slideshow-track">
+            <!-- Slide 1: Lakeside Sunset -->
+            <div class="slide active">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_lakeside_sunset.jpg" alt="Sunset Walks &amp; Golden Hours" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌅 Sunset Walks &amp; Golden Hours</strong>
+                <p class="slide-desc">Chasing sunsets by the water—one of our favorite rituals to pause, talk for hours, and soak in the view.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2: Hibachi & Sushi -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/hero_food.jpg" alt="Hibachi Nights &amp; Sushi Feasts" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🍱 Hibachi Nights &amp; Sushi Feasts</strong>
+                <span class="foodie-pill">Foodie Dates</span>
+                <p class="slide-desc">Bonding over sizzling fried rice, spicy rolls, and delicious dinner dates—our ultimate shared love language.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3: Shubhro Cupid Story -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_city_park.jpg" alt="Where It All Began" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌸 Where It All Began</strong>
+                <p class="slide-desc">Special shoutout to <strong>Shashwata (Shubhro)</strong>—Subhayu’s close friend &amp; Tarunima’s brother—who played Cupid and introduced us during the early days!</p>
+              </div>
+            </div>
+
+            <!-- Slide 4: Double Decker Bus -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_travel_fun.jpg" alt="Adventures on the Top Deck" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🚌 Adventures on the Top Deck</strong>
+                <p class="slide-desc">Front-row breeze, sunny skies, and big smiles—every road trip and vacation is better together.</p>
+              </div>
+            </div>
+
+            <!-- Slide 5: Lake Geneva -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_lake_vista.jpg" alt="Lake Geneva Getaway" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌊 Lake Geneva Getaway</strong>
+                <p class="slide-desc">Crisp blue skies and peaceful water vistas during our memorable trip to Lake Geneva.</p>
+              </div>
+            </div>
+
+            <!-- Slide 6: Half Moon Bay -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_ocean_beach.jpg" alt="Half Moon Bay Coastline" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🏖️ Half Moon Bay Coastline</strong>
+                <p class="slide-desc">Bundled up against the Pacific breeze, watching the waves and making lifelong memories along the coast.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slideshow Controls -->
+          <button class="slide-arrow prev-btn" id="prev-slide" aria-label="Previous slide">‹</button>
+          <button class="slide-arrow next-btn" id="next-slide" aria-label="Next slide">›</button>
+
+          <!-- Dot Indicators -->
+          <div class="slide-indicators" id="slide-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+          </div>
+        </div>
+
+        <!-- V2: Featured Couple Hero Photo (Single Static Card) -->
+        <div class="couple-photo-wrapper hero-single-photo-wrap">
           <div class="photo-frame">
             <img 
               src="./images/moment_city_park.jpg" 
@@ -215,7 +304,7 @@
       </div>
     </section>
 
-    <!-- OUR MOMENTS PHOTO GALLERY SECTION (CUSTOMIZED & PERSONALIZED CAPTIONS) -->
+    <!-- OUR MOMENTS PHOTO GALLERY SECTION (Shown on V2; in V1 it is inside the Hero Slideshow) -->
     <section class="gallery-section" id="gallery">
       <div class="container">
         <div class="text-center">
