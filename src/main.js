@@ -80,9 +80,17 @@ function initThemeSwitcher() {
   }
 }
 
-/* Picture Slideshow for V1 */
+/* Picture Slideshow for V1 with Dynamic Non-Predictable Transitions */
 let slideInterval = null;
 let currentSlideIndex = 0;
+const TRANSITIONS = [
+  'effect-zoom-soft',
+  'effect-drift-right',
+  'effect-glide-up',
+  'effect-drift-left',
+  'effect-breath-scale',
+  'effect-luminous-fade'
+];
 
 function initHeroSlideshow() {
   const slides = document.querySelectorAll('.hero-slideshow-container .slide');
@@ -98,9 +106,15 @@ function initHeroSlideshow() {
     else if (index < 0) currentSlideIndex = slides.length - 1;
     else currentSlideIndex = index;
 
+    // Pick a varied transition effect class for this slide
+    const chosenEffect = TRANSITIONS[currentSlideIndex % TRANSITIONS.length];
+
     slides.forEach((slide, i) => {
+      // Remove all effect classes
+      TRANSITIONS.forEach(cls => slide.classList.remove(cls));
+
       if (i === currentSlideIndex) {
-        slide.classList.add('active');
+        slide.classList.add('active', chosenEffect);
       } else {
         slide.classList.remove('active');
       }
