@@ -33,14 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSlideshow();
 });
 
-/* Theme Switcher Handler - Defaults to V2 */
+/* Theme Switcher Handler - Defaults strictly to V2, shows switcher in local dev only */
 function initThemeSwitcher() {
   const tabs = document.querySelectorAll('.theme-tab-btn');
   const htmlEl = document.documentElement;
+  const switcherBar = document.getElementById('switcher-bar');
 
-  // Check if URL hash explicitly specifies v1; otherwise default to v2
+  // Detect whether running in local development environment
+  const isLocalDev = window.location.hostname === 'localhost' || 
+                     window.location.hostname === '127.0.0.1' || 
+                     window.location.hostname.endsWith('.local') ||
+                     Boolean(import.meta.env?.DEV);
+
+  // Hidden on production, shown in local dev (or via ?switcher=true query override)
+  const hasSwitcherQuery = new URLSearchParams(window.location.search).get('switcher') === 'true';
+  if (switcherBar && (isLocalDev || hasSwitcherQuery)) {
+    switcherBar.style.display = 'block';
+  }
+
+  // Ensure V2 is always the default on page load.
+  // In local dev only, respect #v1 if present in URL hash for testing.
   const hash = window.location.hash.replace('#', '').toLowerCase();
-  const activeVersion = (hash === 'v1') ? 'v1' : 'v2';
+  const activeVersion = (isLocalDev && hash === 'v1') ? 'v1' : 'v2';
 
   setThemeVersion(activeVersion);
 
@@ -56,8 +70,12 @@ function initThemeSwitcher() {
     if (!THEME_CONFIGS[version]) version = 'v2';
 
     htmlEl.setAttribute('data-theme', version);
-    localStorage.setItem('selected_theme_version', version);
-    window.history.replaceState(null, null, `#${version}`);
+
+    // In local dev, sync state to localStorage and URL hash for easy testing
+    if (isLocalDev) {
+      localStorage.setItem('selected_theme_version', version);
+      window.history.replaceState(null, null, `#${version}`);
+    }
 
     tabs.forEach(tab => {
       if (tab.dataset.version === version) {

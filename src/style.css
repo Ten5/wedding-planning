@@ -85,8 +85,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Version Theme Switcher Bar */
+/* Version Theme Switcher Bar (Hidden in production, enabled on local dev) */
 .theme-switcher-bar {
+  display: none;
   background: linear-gradient(90deg, #1E1E24, #2A2A36);
   color: #FFF;
   padding: 0.65rem 1rem;
