@@ -12,13 +12,13 @@ const THEME_CONFIGS = {
   v1: {
     heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
     heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
+    photoBadge: "🌅 #DoRiTales • Lake Geneva Golden Hour",
+    heroPhoto: "./images/photo_lakeside_sunset.jpg",
     confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   },
   v2: {
     heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
     heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
-    photoBadge: "✨ #DoRiTales • City Walks & Historic Architecture",
-    heroPhoto: "./images/moment_city_park.jpg",
     confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
   }
 };

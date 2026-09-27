@@ -770,46 +770,46 @@ body {
    THEME CONDITIONAL DISPLAY RULES (V1 vs V2)
    ========================================================================== */
 
-/* V1: Show Slideshow in Hero, Hide Bottom Gallery */
+/* V1: Show Single Hero Photo & Bottom Gallery Wall, Hide Slideshow */
 [data-theme="v1"] .slideshow-intro-wrap {
-  display: block;
+  display: none;
 }
 
 [data-theme="v1"] .hero-slideshow-container {
-  display: block;
+  display: none;
 }
 
 [data-theme="v1"] .hero-single-photo-wrap {
-  display: none;
+  display: block;
 }
 
 [data-theme="v1"] .gallery-section {
-  display: none;
+  display: block;
 }
 
 [data-theme="v1"] .nav-gallery-item {
-  display: none;
+  display: inline-block;
 }
 
-/* V2: Hide Slideshow, Show Single Hero Photo & Bottom Gallery Grid */
+/* V2: Show Slideshow in Hero, Hide Bottom Gallery Wall */
 [data-theme="v2"] .slideshow-intro-wrap {
-  display: none;
+  display: block;
 }
 
 [data-theme="v2"] .hero-slideshow-container {
-  display: none;
+  display: block;
 }
 
 [data-theme="v2"] .hero-single-photo-wrap {
-  display: block;
+  display: none;
 }
 
 [data-theme="v2"] .gallery-section {
-  display: block;
+  display: none;
 }
 
 [data-theme="v2"] .nav-gallery-item {
-  display: inline-block;
+  display: none;
 }
 
 /* Hero Details Pill */
