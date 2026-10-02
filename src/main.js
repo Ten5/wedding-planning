@@ -257,21 +257,21 @@ function initCountdown() {
 /* Calendar Event Data & Link Generators (Bride First) */
 const EVENT_DETAILS = {
   wedding: {
-    title: "Tarunima (Rini) & Subhayu (Dodo) - Wedding Ceremony",
-    description: "Save the Date for Tarunima & Subhayu's Wedding Ceremony in Mountain View, CA! Formal invitations with exact venue and timing to follow.",
-    location: "Mountain View, CA",
-    startDate: "20261112T100000",
-    endDate: "20261112T160000",
-    isoStart: "2026-11-12T10:00:00-08:00",
-    isoEnd: "2026-11-12T16:00:00-08:00"
+    title: "Tarunima & Subhayu - Wedding Ceremony",
+    description: "Tarunima & Subhayu's Wedding Ceremony at Amber India in Los Altos, CA (2:00 PM onwards). We can't wait to celebrate with you!",
+    location: "Amber India, Los Altos, CA",
+    startDate: "20261112T140000",
+    endDate: "20261112T190000",
+    isoStart: "2026-11-12T14:00:00-08:00",
+    isoEnd: "2026-11-12T19:00:00-08:00"
   },
   reception: {
-    title: "Tarunima (Rini) & Subhayu (Dodo) - Grand Reception",
-    description: "Save the Date for Tarunima & Subhayu's Grand Reception in San Jose / South Bay Area, CA! Evening dinner, music, dancing, and celebration.",
-    location: "San Jose / South Bay Area, CA",
-    startDate: "20261113T180000",
+    title: "Tarunima & Subhayu - Grand Reception",
+    description: "Tarunima & Subhayu's Grand Reception at North Park in San Jose, CA (5:00 PM onwards). An evening of fine cuisine, toasts, music, and dancing!",
+    location: "North Park, San Jose, CA",
+    startDate: "20261113T170000",
     endDate: "20261113T230000",
-    isoStart: "2026-11-13T18:00:00-08:00",
+    isoStart: "2026-11-13T17:00:00-08:00",
     isoEnd: "2026-11-13T23:00:00-08:00"
   }
 };
