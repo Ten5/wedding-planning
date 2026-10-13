@@ -1,8 +1,7 @@
 /* ==========================================================================
-   Dodo & Rini Save the Date - Theme System & Slideshow
+   Tarunima & Subhayu - Wedding Reception Theme (Golden Hour & Floral Elegance)
    ========================================================================== */
 
-/* --- VERSION 1: Golden Hour & Floral Elegance (With Picture Slideshow) --- */
 :root, [data-theme="v1"] {
   --bg-main: #FAF5EF;
   --bg-card: rgba(255, 253, 249, 0.9);
@@ -31,35 +30,6 @@
   --orb-3-bg: radial-gradient(circle, #E07A5F 0%, transparent 70%);
 }
 
-/* --- VERSION 2: Modern Minimalist Luxury (Architectural Cinzel Serif) --- */
-[data-theme="v2"] {
-  --bg-main: #F7F7F8;
-  --bg-card: rgba(255, 255, 255, 0.95);
-  --bg-card-hover: #FFFFFF;
-  --border-card: rgba(197, 160, 89, 0.3);
-  --border-card-hover: rgba(197, 160, 89, 0.6);
-
-  --accent-primary: #B8860B;
-  --accent-secondary: #C5A059;
-  --accent-gold: #B8860B;
-  --accent-badge-bg: #F3EFE6;
-
-  --text-main: #111827;
-  --text-muted: #4B5563;
-  --text-dim: #9CA3AF;
-
-  --font-serif: 'Cinzel', serif;
-  --font-sans: 'Outfit', sans-serif;
-  --font-script: 'Cinzel', serif;
-
-  --shadow-glow: 0 10px 30px rgba(197, 160, 89, 0.2);
-  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.05);
-
-  --orb-1-bg: radial-gradient(circle, rgba(197, 160, 89, 0.3) 0%, transparent 70%);
-  --orb-2-bg: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
-  --orb-3-bg: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
-}
-
 /* ==========================================================================
    GLOBAL STYLES & RESPONSIVE LAYOUT
    ========================================================================== */
@@ -76,76 +46,12 @@ html {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-/* Version Theme Switcher Bar (Hidden in production, enabled on local dev) */
-.theme-switcher-bar {
-  display: none;
-  background: linear-gradient(90deg, #1E1E24, #2A2A36);
-  color: #FFF;
-  padding: 0.65rem 1rem;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.switcher-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.switcher-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #F3EFE6;
-}
-
-.switcher-options {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.theme-tab-btn {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #E2E8F0;
-  padding: 0.35rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.theme-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  color: #FFF;
-}
-
-.theme-tab-btn.active {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: #FFF;
-  border-color: transparent;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 /* Ambient Floating Orbs */
@@ -767,50 +673,79 @@ body {
   border-radius: 12px;
 }
 
-/* ==========================================================================
-   THEME CONDITIONAL DISPLAY RULES (V1 vs V2)
-   ========================================================================== */
+/* Parents Announcement Card */
+.parents-line-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 0.9rem 1.8rem;
+  margin: 0.6rem auto 1.8rem auto;
+  max-width: 680px;
+  box-shadow: var(--shadow-card);
+}
 
-/* V1: Show Single Hero Photo & Bottom Gallery Wall, Hide Slideshow */
-[data-theme="v1"] .slideshow-intro-wrap {
+.parent-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.96rem;
+  color: var(--text-muted);
+}
+
+.parent-person {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.02em;
+}
+
+.parent-rel {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.parent-divider {
   display: none;
+  color: var(--accent-gold);
+  font-weight: bold;
 }
 
-[data-theme="v1"] .hero-slideshow-container {
-  display: none;
+@media (min-width: 680px) {
+  .parents-line-card {
+    flex-direction: row;
+    gap: 1.2rem;
+  }
+  .parent-divider {
+    display: inline-block;
+  }
 }
 
-[data-theme="v1"] .hero-single-photo-wrap {
-  display: block;
+/* Single Event Featured Card for Reception */
+.single-event-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
-[data-theme="v1"] .gallery-section {
-  display: block;
+.featured-event-card {
+  padding: 2.6rem 2.2rem;
+  border-radius: 26px;
+  text-align: center;
 }
 
-[data-theme="v1"] .nav-gallery-item {
-  display: inline-block;
-}
-
-/* V2: Show Slideshow in Hero, Hide Bottom Gallery Wall */
-[data-theme="v2"] .slideshow-intro-wrap {
-  display: block;
-}
-
-[data-theme="v2"] .hero-slideshow-container {
-  display: block;
-}
-
-[data-theme="v2"] .hero-single-photo-wrap {
-  display: none;
-}
-
-[data-theme="v2"] .gallery-section {
-  display: none;
-}
-
-[data-theme="v2"] .nav-gallery-item {
-  display: none;
+.featured-event-card .event-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.6rem;
 }
 
 /* Hero Details Pill */
@@ -1414,6 +1349,29 @@ select.form-input option {
     border-radius: 18px;
   }
 
+  .parents-line-card {
+    width: 100%;
+    max-width: 95%;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 1.4rem;
+  }
+  .parent-entry {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .featured-event-card {
+    padding: 2rem 1.4rem;
+  }
+  .featured-event-card .event-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .featured-event-card .event-actions .btn {
+    width: 100%;
+  }
+
   .hero-details-pill {
     flex-direction: column;
     border-radius: 20px;
@@ -1491,6 +1449,17 @@ select.form-input option {
   }
   .couple-photo {
     height: 250px;
+  }
+  .parents-line-card {
+    padding: 0.75rem 0.85rem;
+    gap: 0.35rem;
+  }
+  .parent-person {
+    font-size: 1.02rem;
+  }
+  .parent-rel {
+    font-size: 0.82rem;
+    line-height: 1.3;
   }
   .slideshow-track {
     min-height: 380px;

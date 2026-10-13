@@ -1,197 +1,19 @@
 import confetti from 'canvas-confetti';
 
-// Target Wedding Date: November 12, 2026 10:00:00 AM PST
-const WEDDING_DATE = new Date('2026-11-12T10:00:00-08:00');
+// Target Wedding Reception Date: Friday, November 13, 2026 5:00:00 PM PST
+const WEDDING_DATE = new Date('2026-11-13T17:00:00-08:00');
 
 // Google Apps Script Web App URL for Google Sheets RSVP Integration
-// Replace with your deployed Web App URL from Google Sheets
+// Paste your deployed Google Apps Script URL here to sync responses to Google Sheets
 let GOOGLE_SHEET_WEB_APP_URL = "";
 
-// Theme Configurations for V1 and V2
-const THEME_CONFIGS = {
-  v1: {
-    heroBadge: "🌅 GOLDEN HOUR & FLORAL ELEGANCE 🌸",
-    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
-    photoBadge: "🌅 #DoRiTales • Lake Geneva Golden Hour",
-    heroPhoto: "./images/photo_lakeside_sunset.jpg",
-    confettiColors: ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
-  },
-  v2: {
-    heroBadge: "✨ MODERN MINIMALIST LUXURY 💍",
-    heroSubtitle: "Are getting married! A cozy celebration centered around fine food, blooms & love.",
-    confettiColors: ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
-  }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-  initThemeSwitcher();
   initNavbar();
   initCountdown();
   initCalendarHandlers();
   initFoodieForm();
   initRsvpForm();
-  initHeroSlideshow();
 });
-
-/* Theme Switcher Handler - Defaults strictly to V2, shows switcher in local dev only */
-function initThemeSwitcher() {
-  const tabs = document.querySelectorAll('.theme-tab-btn');
-  const htmlEl = document.documentElement;
-  const switcherBar = document.getElementById('switcher-bar');
-
-  // Detect whether running in local development environment
-  const isLocalDev = window.location.hostname === 'localhost' || 
-                     window.location.hostname === '127.0.0.1' || 
-                     window.location.hostname.endsWith('.local') ||
-                     Boolean(import.meta.env?.DEV);
-
-  // Hidden on production, shown in local dev (or via ?switcher=true query override)
-  const hasSwitcherQuery = new URLSearchParams(window.location.search).get('switcher') === 'true';
-  if (switcherBar && (isLocalDev || hasSwitcherQuery)) {
-    switcherBar.style.display = 'block';
-  }
-
-  // Ensure V2 is always the default on page load.
-  // In local dev only, respect #v1 if present in URL hash for testing.
-  const hash = window.location.hash.replace('#', '').toLowerCase();
-  const activeVersion = (isLocalDev && hash === 'v1') ? 'v1' : 'v2';
-
-  setThemeVersion(activeVersion);
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      const version = e.currentTarget.dataset.version;
-      setThemeVersion(version);
-      triggerConfetti(THEME_CONFIGS[version]?.confettiColors);
-    });
-  });
-
-  function setThemeVersion(version) {
-    if (!THEME_CONFIGS[version]) version = 'v2';
-
-    htmlEl.setAttribute('data-theme', version);
-
-    // In local dev, sync state to localStorage and URL hash for easy testing
-    if (isLocalDev) {
-      localStorage.setItem('selected_theme_version', version);
-      window.history.replaceState(null, null, `#${version}`);
-    }
-
-    tabs.forEach(tab => {
-      if (tab.dataset.version === version) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
-    });
-
-    const cfg = THEME_CONFIGS[version];
-    const heroBadge = document.getElementById('hero-badge-tag');
-    const heroSubtitle = document.getElementById('hero-subtitle-text');
-    const photoBadge = document.getElementById('photo-badge-text');
-    const heroPhoto = document.getElementById('hero-photo');
-
-    if (heroBadge) heroBadge.innerHTML = `<span>${cfg.heroBadge}</span>`;
-    if (heroSubtitle) heroSubtitle.textContent = cfg.heroSubtitle;
-    if (photoBadge && cfg.photoBadge) photoBadge.innerHTML = `<span>${cfg.photoBadge}</span>`;
-    if (heroPhoto && cfg.heroPhoto) heroPhoto.src = cfg.heroPhoto;
-  }
-}
-
-/* Picture Slideshow for V1 with Dynamic Non-Predictable Transitions */
-let slideInterval = null;
-let currentSlideIndex = 0;
-const TRANSITIONS = [
-  'effect-zoom-soft',
-  'effect-drift-right',
-  'effect-glide-up',
-  'effect-drift-left',
-  'effect-breath-scale',
-  'effect-luminous-fade'
-];
-
-function initHeroSlideshow() {
-  const slides = document.querySelectorAll('.hero-slideshow-container .slide');
-  const dots = document.querySelectorAll('.slide-indicators .dot');
-  const prevBtn = document.getElementById('prev-slide');
-  const nextBtn = document.getElementById('next-slide');
-  const slideshowEl = document.getElementById('hero-slideshow');
-
-  if (!slides.length) return;
-
-  function showSlide(index) {
-    if (index >= slides.length) currentSlideIndex = 0;
-    else if (index < 0) currentSlideIndex = slides.length - 1;
-    else currentSlideIndex = index;
-
-    // Pick a varied transition effect class for this slide
-    const chosenEffect = TRANSITIONS[currentSlideIndex % TRANSITIONS.length];
-
-    slides.forEach((slide, i) => {
-      // Remove all effect classes
-      TRANSITIONS.forEach(cls => slide.classList.remove(cls));
-
-      if (i === currentSlideIndex) {
-        slide.classList.add('active', chosenEffect);
-      } else {
-        slide.classList.remove('active');
-      }
-    });
-
-    dots.forEach((dot, i) => {
-      if (i === currentSlideIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
-
-  function startAutoplay() {
-    stopAutoplay();
-    slideInterval = setInterval(() => {
-      showSlide(currentSlideIndex + 1);
-    }, 7500);
-  }
-
-  function stopAutoplay() {
-    if (slideInterval) clearInterval(slideInterval);
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showSlide(currentSlideIndex - 1);
-      startAutoplay();
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showSlide(currentSlideIndex + 1);
-      startAutoplay();
-    });
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
-      const idx = parseInt(e.target.dataset.index, 10);
-      showSlide(idx);
-      startAutoplay();
-    });
-  });
-
-  if (slideshowEl) {
-    slideshowEl.addEventListener('mouseenter', stopAutoplay);
-    slideshowEl.addEventListener('mouseleave', startAutoplay);
-    slideshowEl.addEventListener('touchstart', stopAutoplay, { passive: true });
-    slideshowEl.addEventListener('touchend', startAutoplay, { passive: true });
-  }
-
-  showSlide(0);
-  startAutoplay();
-}
 
 /* Navbar Mobile Toggle & Scroll Effect */
 function initNavbar() {
@@ -220,7 +42,7 @@ function initNavbar() {
   }
 }
 
-/* Dynamic Live Countdown Timer */
+/* Dynamic Live Countdown Timer to November 13, 2026 5:00 PM PST */
 function initCountdown() {
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -229,7 +51,7 @@ function initCountdown() {
 
   function update() {
     const now = new Date();
-    const diff = WEDDING_DATE - now;
+    const diff = WEDDING_DATE.getTime() - now.getTime();
 
     if (diff <= 0) {
       if (daysEl) daysEl.textContent = '00';
@@ -241,7 +63,7 @@ function initCountdown() {
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
     const secs = Math.floor((diff / 1000) % 60);
 
     if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
@@ -254,20 +76,11 @@ function initCountdown() {
   setInterval(update, 1000);
 }
 
-/* Calendar Event Data & Link Generators (Bride First) */
+/* Calendar Event Data for Reception */
 const EVENT_DETAILS = {
-  wedding: {
-    title: "Tarunima & Subhayu - Wedding Ceremony",
-    description: "Tarunima & Subhayu's Wedding Ceremony at Amber India in Los Altos, CA (2:00 PM onwards). We can't wait to celebrate with you!",
-    location: "Amber India, Los Altos, CA",
-    startDate: "20261112T140000",
-    endDate: "20261112T190000",
-    isoStart: "2026-11-12T14:00:00-08:00",
-    isoEnd: "2026-11-12T19:00:00-08:00"
-  },
   reception: {
-    title: "Tarunima & Subhayu - Grand Reception",
-    description: "Tarunima & Subhayu's Grand Reception at North Park in San Jose, CA (5:00 PM onwards). An evening of fine cuisine, toasts, music, and dancing!",
+    title: "Tarunima & Subhayu - Wedding Reception",
+    description: "Tarunima Mandal & Subhayu Chakravorty's Wedding Reception at North Park in San Jose, CA (5:00 PM onwards). We can't wait to celebrate with you!",
     location: "North Park, San Jose, CA",
     startDate: "20261113T170000",
     endDate: "20261113T230000",
@@ -281,24 +94,23 @@ function initCalendarHandlers() {
   const icalBtn = document.getElementById('btn-ical');
 
   document.querySelectorAll('.cal-trigger-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const eventType = e.target.dataset.event || 'wedding';
+    btn.addEventListener('click', () => {
       triggerConfetti();
-      downloadIcs(EVENT_DETAILS[eventType]);
+      downloadIcs(EVENT_DETAILS.reception);
     });
   });
 
   if (gcalBtn) {
     gcalBtn.addEventListener('click', () => {
       triggerConfetti();
-      openGoogleCalendar(EVENT_DETAILS.wedding);
+      openGoogleCalendar(EVENT_DETAILS.reception);
     });
   }
 
   if (icalBtn) {
     icalBtn.addEventListener('click', () => {
       triggerConfetti();
-      downloadIcs(EVENT_DETAILS.wedding);
+      downloadIcs(EVENT_DETAILS.reception);
     });
   }
 }
@@ -316,7 +128,7 @@ function downloadIcs(ev) {
   const icsData = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Subhayu & Tarunima Wedding//Save The Date//EN',
+    'PRODID:-//Tarunima & Subhayu Wedding Reception//EN',
     'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
     `SUMMARY:${ev.title}`,
@@ -406,7 +218,7 @@ function initRsvpForm() {
       timestamp: new Date().toLocaleString()
     };
 
-    // Save locally as backup
+    // Save locally in browser storage as immediate backup
     const rsvpEntries = JSON.parse(localStorage.getItem('rsvp_entries') || '[]');
     rsvpEntries.push(payload);
     localStorage.setItem('rsvp_entries', JSON.stringify(rsvpEntries));
@@ -428,12 +240,12 @@ function initRsvpForm() {
   });
 }
 
-/* Confetti Helper */
+/* Confetti Helper with Warm Golden Floral Palette */
 function triggerConfetti(colors) {
   confetti({
     particleCount: 85,
     spread: 75,
     origin: { y: 0.65 },
-    colors: colors || ['#C5A059', '#B8860B', '#F3EFE6', '#111827', '#E5E7EB']
+    colors: colors || ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
   });
 }
