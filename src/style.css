@@ -386,31 +386,42 @@ body {
 }
 
 
-/* Couple & Parents Hero Header */
-.couple-hero-wrap {
-  margin: 0.6rem auto 1.8rem auto;
-  max-width: 860px;
-  width: 100%;
+/* Couple & Parents Hero Announcement Card */
+.couple-announcement-card {
+  max-width: 780px;
+  margin: 0 auto 2.2rem auto;
+  padding: 2.2rem 2rem;
+  border-radius: 26px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
 }
 
-.couple-names-header {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 5.2vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 auto 0.6rem auto;
+.couple-atomic-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: clamp(0.4rem, 1.8vw, 1rem);
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.couple-atomic-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.person-name-group {
+.couple-atomic-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
   display: inline-flex;
   align-items: baseline;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: 0.4rem;
   white-space: nowrap;
 }
 
@@ -433,62 +444,85 @@ body {
   display: inline-block;
 }
 
+.couple-atomic-ampersand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-ampersand {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   color: var(--accent-secondary);
   line-height: 1;
-  margin: 0 0.2rem;
 }
 
-.parents-lineage-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1rem, 3.5vw, 2.5rem);
-  max-width: 780px;
-  margin: 0.4rem auto 0 auto;
-  text-align: center;
-}
-
-@media (max-width: 580px) {
-  .parents-lineage-row {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-}
-
-.parent-col {
+.parents-lineage {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .parent-rel {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  font-size: 0.92rem;
   color: var(--text-dim);
   line-height: 1.2;
 }
 
 .parent-names {
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 2.4vw, 1.28rem);
-  font-weight: 400;
+  font-size: 1.05rem;
+  font-weight: 500;
   color: var(--text-main);
-  letter-spacing: 0.01em;
   line-height: 1.35;
 }
 
-.hero-subtitle {
-  font-size: 1.15rem;
+.couple-announcement-card .hero-subtitle {
+  font-size: 1.05rem;
   color: var(--text-muted);
-  margin: 0 auto 2rem auto;
-  font-weight: 400;
-  max-width: 720px;
+  max-width: 620px;
+  margin: 1.2rem auto 0 auto;
   line-height: 1.6;
+  border-top: 1px solid var(--border-card);
+  padding-top: 1.2rem;
+}
+
+@media (max-width: 680px) {
+  .couple-announcement-card {
+    padding: 1.6rem 1.1rem;
+    border-radius: 20px;
+    margin-bottom: 1.8rem;
+  }
+
+  .couple-atomic-row {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .couple-atomic-col {
+    width: 100%;
+  }
+
+  .couple-atomic-ampersand {
+    margin: 0.1rem 0;
+  }
+
+  .couple-atomic-name {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+  }
+
+  .parent-names {
+    font-size: 0.98rem;
+  }
+
+  .couple-announcement-card .hero-subtitle {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
 }
 
 
@@ -925,63 +959,6 @@ body {
   margin-top: 1.6rem;
 }
 
-/* Hero Details Pill */
-.hero-details-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 1.1rem 2rem;
-  border-radius: 50px;
-  gap: 1.8rem;
-  margin: 0 auto 1.8rem auto;
-  text-align: left;
-  box-shadow: var(--shadow-card);
-}
-
-.pill-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.pill-icon {
-  font-size: 1.5rem;
-}
-
-.pill-item strong {
-  display: block;
-  color: var(--text-main);
-  font-size: 0.96rem;
-}
-
-.pill-item small {
-  color: var(--text-dim);
-  font-size: 0.82rem;
-}
-
-.pill-divider {
-  width: 1px;
-  height: 32px;
-  background: var(--border-card);
-}
-
-.hero-cta-group {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-#hero-rsvp-btn {
-  max-width: 440px;
-  width: 100%;
-  padding: 1rem 2rem;
-  font-size: 1.05rem;
-}
-
 /* Clickable Map Location Links */
 .location-map-link {
   color: inherit;
@@ -1006,29 +983,9 @@ body {
   padding: 2.5rem 1.25rem;
 }
 
-.two-col-action-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: stretch;
-  max-width: 1100px;
+.single-livestream-wrapper {
+  max-width: 720px;
   margin: 0 auto;
-}
-
-@media (min-width: 880px) {
-  .two-col-action-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.two-col-action-grid .livestream-card,
-.two-col-action-grid .rsvp-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 0;
-  max-width: none;
 }
 
 .livestream-card {
@@ -1342,10 +1299,100 @@ body {
   font-size: 0.92rem;
 }
 
-/* RSVP Section */
-.rsvp-card {
-  max-width: 720px;
-  margin: 0 auto;
+/* ==========================================================================
+   RSVP INTERACTIVE MODAL
+   ========================================================================== */
+.rsvp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.rsvp-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.rsvp-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 8, 7, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.rsvp-modal-dialog {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.4rem 2rem;
+  border-radius: 26px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: rsvpModalPop 0.3s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes rsvpModalPop {
+  0% { transform: scale(0.93) translateY(15px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.rsvp-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-card);
+  background: #FFF;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.rsvp-modal-close:hover {
+  background: var(--accent-badge-bg);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: scale(1.08);
+}
+
+.rsvp-modal-header {
+  margin-bottom: 1.2rem;
+}
+
+.rsvp-modal-header .section-title {
+  font-size: 1.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.rsvp-modal-header .section-description {
+  font-size: 0.94rem;
+  margin-bottom: 0;
 }
 
 .rsvp-icon {
@@ -1355,7 +1402,7 @@ body {
 }
 
 .rsvp-form {
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
   text-align: left;
 }
 
@@ -1489,8 +1536,7 @@ select.form-input option {
     width: 100%;
   }
 
-  .livestream-card,
-  .two-col-action-grid .rsvp-card {
+  .livestream-card {
     padding: 1.8rem 1.2rem;
     border-radius: 20px;
   }
@@ -1498,25 +1544,6 @@ select.form-input option {
   .stream-placeholder-box {
     padding: 1.5rem 1rem;
     border-radius: 16px;
-  }
-
-  .hero-details-pill {
-    flex-direction: column;
-    border-radius: 20px;
-    gap: 0.75rem;
-    padding: 1rem 1.2rem;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto 1.5rem auto;
-  }
-  .pill-item {
-    justify-content: center;
-  }
-  .pill-divider {
-    width: 80%;
-    height: 1px;
   }
 
   .form-grid {

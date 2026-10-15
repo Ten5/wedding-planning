@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initFoodieForm();
   initRsvpForm();
+  initRsvpModal();
   initHeroSlideshow();
 });
 
@@ -165,6 +166,42 @@ function initRsvpForm() {
     const guestLabel = parseInt(guests, 10) > 1 ? ` (Party of ${guests})` : '';
     feedback.textContent = `Thank you ${fullName}${guestLabel}! Your RSVP has been confirmed. We can't wait to celebrate together! 💌✨`;
     form.reset();
+  });
+}
+
+/* RSVP Modal Open/Close Controls */
+function initRsvpModal() {
+  const modal = document.getElementById('rsvp-modal');
+  const closeBtn = document.getElementById('rsvp-modal-close');
+  const backdrop = document.getElementById('rsvp-modal-backdrop');
+  const openButtons = document.querySelectorAll('.open-rsvp-modal-btn, a[href="#rsvp"]');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    if (!modal) return;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+      closeModal();
+    }
   });
 }
 

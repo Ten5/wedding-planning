@@ -61,37 +61,43 @@
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="hero-content">
-        <!-- Couple & Parents Announcement (No box, centered directly under each name) -->
-        <div class="couple-hero-wrap">
-          <!-- Couple Names Row with Ampersand -->
-          <h1 class="couple-names-header">
-            <span class="person-name-group groom-group">
-              <span class="name-gold">Subhayu</span>
-              <span class="nickname-black">(Dodo)</span>
-            </span>
-            <span class="hero-ampersand">&amp;</span>
-            <span class="person-name-group bride-group">
-              <span class="name-gold">Tarunima</span>
-              <span class="nickname-black">(Rini)</span>
-            </span>
-          </h1>
-
-          <!-- Parents Lineage Row (Centered under each name on desktop, clean on mobile) -->
-          <div class="parents-lineage-row">
-            <div class="parent-col groom-parent">
-              <span class="parent-rel">son of</span>
-              <span class="parent-names">Nandini and Subhrangshu Chakravorty</span>
+        <!-- Couple & Parents Announcement Card (Atomic format in white padded card) -->
+        <div class="couple-announcement-card glass-card">
+          <div class="couple-atomic-row">
+            <!-- Groom Atomic Unit -->
+            <div class="couple-atomic-col groom-atomic">
+              <h1 class="couple-atomic-name">
+                <span class="name-gold">Subhayu</span>
+                <span class="nickname-black">(Dodo)</span>
+              </h1>
+              <div class="parents-lineage">
+                <span class="parent-rel">son of</span>
+                <span class="parent-names">Nandini and Subhrangshu Chakravorty</span>
+              </div>
             </div>
-            <div class="parent-col bride-parent">
-              <span class="parent-rel">daughter of</span>
-              <span class="parent-names">Madhumita and Tapas Mandal</span>
+
+            <!-- Elegant Ampersand -->
+            <div class="couple-atomic-ampersand">
+              <span class="hero-ampersand">&amp;</span>
+            </div>
+
+            <!-- Bride Atomic Unit -->
+            <div class="couple-atomic-col bride-atomic">
+              <h1 class="couple-atomic-name">
+                <span class="name-gold">Tarunima</span>
+                <span class="nickname-black">(Rini)</span>
+              </h1>
+              <div class="parents-lineage">
+                <span class="parent-rel">daughter of</span>
+                <span class="parent-names">Madhumita and Tapas Mandal</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <p class="hero-subtitle" id="hero-subtitle-text">
-          Together with their families, invite you to celebrate their wedding reception — an evening of fine cuisine, heartfelt toasts, and joyful memories at North Park.
-        </p>
+          <p class="hero-subtitle" id="hero-subtitle-text">
+            Together with their families, invite you to celebrate their wedding reception — an evening of fine cuisine, heartfelt toasts, and joyful memories at North Park.
+          </p>
+        </div>
 
         <!-- Slideshow Intro Subtext -->
         <div class="slideshow-intro-wrap" id="journey">
@@ -288,32 +294,6 @@
           </div>
         </div>
 
-        <!-- Hero Details Pill: Friday, November 13, 2026 -->
-        <div class="hero-details-pill">
-          <div class="pill-item">
-            <span class="pill-icon">📅</span>
-            <div>
-              <strong>Friday, November 13, 2026</strong>
-              <small>5:30 PM onwards</small>
-            </div>
-          </div>
-          <div class="pill-divider"></div>
-          <div class="pill-item">
-            <span class="pill-icon">📍</span>
-            <div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Cypress+Clubroom+North+Park+San+Jose+CA" target="_blank" rel="noopener noreferrer" class="location-map-link">
-                <strong>Cypress Clubroom North Park - San Jose, CA</strong>
-                <small>Wedding Reception ↗</small>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-cta-group">
-          <a href="#rsvp" class="btn btn-primary" id="hero-rsvp-btn">
-            <span>💌 RSVP Now</span>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -356,21 +336,21 @@
               </a>
             </div>
             <div class="event-actions">
-              <a href="#rsvp" class="btn btn-primary">
+              <button type="button" class="btn btn-primary open-rsvp-modal-btn">
                 💌 RSVP for Reception
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACTION SECTION: LIVE STREAM & RSVP SIDE-BY-SIDE -->
-    <section class="action-section" id="rsvp">
+    <!-- LIVESTREAM BROADCAST SECTION -->
+    <section class="action-section" id="livestream">
       <div class="container">
-        <div class="two-col-action-grid">
-          <!-- Column 1: Live Stream Info Card -->
-          <div class="livestream-card glass-card" id="livestream">
+        <div class="single-livestream-wrapper">
+          <!-- Live Stream Info Card -->
+          <div class="livestream-card glass-card">
             <div class="livestream-badge"><span>🔴 LIVE BROADCAST</span></div>
             <h2 class="section-title">Reception Live Stream</h2>
             <p class="section-description">
@@ -381,48 +361,11 @@
               <h3 class="stream-title">Live Stream Link Coming Soon</h3>
               <p class="stream-subtext">The broadcast link will be updated here closer to Friday, November 13, 2026. RSVP to receive the stream link directly.</p>
             </div>
-          </div>
-
-          <!-- Column 2: RSVP Form Card -->
-          <div class="rsvp-card glass-card">
-            <span class="rsvp-icon">💌</span>
-            <h2 class="section-title">RSVP &amp; Stay Updated</h2>
-            <p class="section-description">
-              Kindly share your contact details below so Subhayu &amp; Tarunima can deliver reception updates, arrival directions, and schedule timings directly to you.
-            </p>
-
-            <form id="rsvp-form" class="rsvp-form">
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="rsvp-full-name">Full Name(s)</label>
-                  <input type="text" id="rsvp-full-name" required placeholder="e.g. Alex &amp; Morgan" class="form-input">
-                </div>
-
-                <div class="form-group">
-                  <label for="rsvp-email">Email Address</label>
-                  <input type="email" id="rsvp-email" required placeholder="you@example.com" class="form-input">
-                </div>
-
-                <div class="form-group full-width">
-                  <label for="rsvp-guests">Total Attending (Including You)</label>
-                  <select id="rsvp-guests" class="form-input">
-                    <option value="1">1 (Just Me)</option>
-                    <option value="2">2 (Me + 1 Guest)</option>
-                    <option value="3">3 (Me + 2 Guests)</option>
-                  </select>
-                </div>
-
-                <div class="form-group full-width">
-                  <label for="rsvp-notes">A Message for Subhayu &amp; Tarunima (Optional)</label>
-                  <textarea id="rsvp-notes" rows="3" placeholder="Share your excitement, warm wishes, or dietary preferences!" class="form-input"></textarea>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary" id="btn-submit-rsvp" style="width: 100%; padding: 1rem;">
-                <span>Send RSVP &amp; Stay Updated ✨</span>
+            <div style="margin-top: 1.8rem;">
+              <button type="button" class="btn btn-primary open-rsvp-modal-btn">
+                <span>💌 RSVP for Live Stream Access</span>
               </button>
-              <div id="rsvp-feedback" class="form-feedback" aria-live="polite"></div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -544,6 +487,52 @@
         <p id="lightbox-desc" class="lightbox-desc"></p>
       </div>
       <span class="lightbox-hint">Tap arrows or swipe to browse • Tap outside or ✕ to close</span>
+    </div>
+  <!-- RSVP Interactive Modal Dialog -->
+  <div class="rsvp-modal-overlay" id="rsvp-modal" aria-hidden="true" role="dialog" aria-labelledby="rsvp-modal-title">
+    <div class="rsvp-modal-backdrop" id="rsvp-modal-backdrop"></div>
+    <div class="rsvp-modal-dialog glass-card">
+      <button class="rsvp-modal-close" id="rsvp-modal-close" aria-label="Close RSVP form">✕</button>
+      <div class="rsvp-modal-header text-center">
+        <span class="rsvp-icon">💌</span>
+        <h2 class="section-title" id="rsvp-modal-title">RSVP &amp; Stay Updated</h2>
+        <p class="section-description">
+          Kindly share your details below so Subhayu &amp; Tarunima can deliver reception updates, arrival directions, and schedule timings directly to you.
+        </p>
+      </div>
+
+      <form id="rsvp-form" class="rsvp-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="rsvp-full-name">Full Name(s)</label>
+            <input type="text" id="rsvp-full-name" required placeholder="e.g. Alex &amp; Morgan" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="rsvp-email">Email Address</label>
+            <input type="email" id="rsvp-email" required placeholder="you@example.com" class="form-input">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="rsvp-guests">Total Attending (Including You)</label>
+            <select id="rsvp-guests" class="form-input">
+              <option value="1">1 (Just Me)</option>
+              <option value="2">2 (Me + 1 Guest)</option>
+              <option value="3">3 (Me + 2 Guests)</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="rsvp-notes">A Message for Subhayu &amp; Tarunima (Optional)</label>
+            <textarea id="rsvp-notes" rows="3" placeholder="Share your excitement, warm wishes, or dietary preferences!" class="form-input"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-submit-rsvp" style="width: 100%; padding: 1rem;">
+          <span>Send RSVP &amp; Stay Updated ✨</span>
+        </button>
+        <div id="rsvp-feedback" class="form-feedback" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 
