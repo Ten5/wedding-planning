@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="v1">
+<html lang="en" data-theme="v2">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,7 @@
       <ul class="nav-links">
         <li><a href="#schedule">Date &amp; Venue</a></li>
         <li><a href="#calendar">Add to Calendar</a></li>
-        <li class="nav-gallery-item"><a href="#gallery">Our Moments</a></li>
+        <li class="nav-gallery-item"><a href="#journey">Our Journey</a></li>
         <li><a href="#interests" id="nav-interests-link">Food &amp; Football</a></li>
         <li><a href="#travel">Travel Info</a></li>
         <li><a href="#rsvp" class="nav-btn">RSVP</a></li>
@@ -96,28 +96,212 @@
           </div>
         </div>
 
-        <!-- Featured Couple Hero Photo (V1 Single Photo) -->
-        <div class="couple-photo-wrapper hero-single-photo-wrap">
-          <div class="photo-frame">
-            <img 
-              src="./images/photo_lakeside_sunset.jpg" 
-              alt="Tarunima and Subhayu together at Lake Geneva" 
-              class="couple-photo"
-              id="hero-photo"
-            />
-            <div class="photo-caption-badge" id="photo-badge-text">
-              <span>🌅 #DoRiTales • Lake Geneva Golden Hour</span>
+        <!-- Slideshow Intro Subtext -->
+        <div class="slideshow-intro-wrap" id="journey">
+          <span class="section-tag font-alt">Our Journey</span>
+          <p class="slideshow-subtext">Met through Subhayu's friend and Rini's cousin — snapshots from our favorite memories, food adventures, and waterfront strolls.</p>
+        </div>
+
+        <!-- Full 15-Photo Picture Slideshow with Short Crisp Captions -->
+        <div class="hero-slideshow-container" id="hero-slideshow">
+          <div class="slideshow-track">
+            <!-- Slide 1: Lake Geneva Sunset -->
+            <div class="slide active">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_lakeside_sunset.jpg" alt="Lake Geneva Sunset" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌅 Lake Geneva Sunset</strong>
+                <p class="slide-desc">Clear skies, golden hour, and our favorite lakeside strolls.</p>
+              </div>
             </div>
+
+            <!-- Slide 2: Sunset Walk by the Water -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_lakeside_sunset.jpg" alt="Sunset Walk by the Water" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌇 Sunset Walk by the Water</strong>
+                <p class="slide-desc">Catching golden hour reflections and quiet evening chats.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3: Half Moon Bay Coast -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_half_moon_bay.jpg" alt="Half Moon Bay Coast" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🏖️ Half Moon Bay Coast</strong>
+                <p class="slide-desc">Bundled up against chilly Pacific ocean winds and watching the tides.</p>
+              </div>
+            </div>
+
+            <!-- Slide 4: Ocean Coastline Breeze -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_ocean_beach.jpg" alt="Ocean Coastline Breeze" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌊 Ocean Coastline Breeze</strong>
+                <p class="slide-desc">Crisp seaside air and beachside memories along the coast.</p>
+              </div>
+            </div>
+
+            <!-- Slide 5: City Park (Where It All Began) -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_city_park.jpg" alt="Where It All Began" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌸 Where It All Began</strong>
+                <p class="slide-desc">Met through Subhayu's friend and Rini's cousin—special shoutout for introducing us in the early days!</p>
+              </div>
+            </div>
+
+            <!-- Slide 6: Hibachi & Sushi -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/hero_food.jpg" alt="Hibachi Nights" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🍱 Hibachi Shows &amp; Fried Rice</strong>
+                <p class="slide-desc">Bonding over sizzling grills, sushi rolls, and great laughs.</p>
+              </div>
+            </div>
+
+            <!-- Slide 7: Conveyor Belt Sushi -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_conveyor_sushi.jpg" alt="Conveyor Belt Sushi" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🍣 Conveyor Belt Sushi Nights</strong>
+                <p class="slide-desc">Grabbing way too many plates from the belt and washing it down with Ramune.</p>
+              </div>
+            </div>
+
+            <!-- Slide 8: Dim Sum Feast -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_dim_sum.jpg" alt="Dim Sum &amp; Dumpling Runs" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🥟 Dim Sum &amp; Dumpling Runs</strong>
+                <p class="slide-desc">Steam baskets, soup dumplings, chow fun, and iced milk tea feasts.</p>
+              </div>
+            </div>
+
+            <!-- Slide 9: Giant Dosa -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_giant_dosa.jpg" alt="Giant Dosa Feasts" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🥞 Giant Dosa Feasts</strong>
+                <p class="slide-desc">Meter-long crispy dosas with family—the bigger the feast, the better.</p>
+              </div>
+            </div>
+
+            <!-- Slide 10: Fine Dining Date -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_fine_dining.jpg" alt="Date Nights &amp; Cocktails" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🍸 Date Nights &amp; Cocktails</strong>
+                <p class="slide-desc">Dressing up for delicious grilled skewers and celebrating little moments.</p>
+              </div>
+            </div>
+
+            <!-- Slide 11: Patio Brunch -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_patio_brunch.jpg" alt="Patio Brunch &amp; Blooms" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌸 Patio Brunch &amp; Blooms</strong>
+                <p class="slide-desc">Outdoor coffee, fresh flowers, and long chats under the sun.</p>
+              </div>
+            </div>
+
+            <!-- Slide 12: Double Decker Bus -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_double_decker_bus.jpg" alt="Sightseeing on the Top Deck" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🚌 "Make A Wish" Sightseeing</strong>
+                <p class="slide-desc">Catching the top-deck breeze and exploring fun road trip stops.</p>
+              </div>
+            </div>
+
+            <!-- Slide 13: Sightseeing Adventures -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_travel_fun.jpg" alt="Top-Deck Adventures" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🚍 Sightseeing Road Trips</strong>
+                <p class="slide-desc">Sunny travel adventures and smiles from every stop along the way.</p>
+              </div>
+            </div>
+
+            <!-- Slide 14: Lake Vista -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/moment_lake_vista.jpg" alt="Sunny Lake Getaway" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">🌊 Sunny Lake Getaway</strong>
+                <p class="slide-desc">Crisp blue skies and peaceful water vistas on our weekend trips.</p>
+              </div>
+            </div>
+
+            <!-- Slide 15: Sulley Selfie -->
+            <div class="slide">
+              <div class="slide-photo-frame">
+                <img src="./images/photo_monsters_inc.jpg" alt="Sulley Photobomb" class="slide-img">
+              </div>
+              <div class="slide-caption-card">
+                <strong class="slide-title">👾 Sulley Photobomb!</strong>
+                <p class="slide-desc">Goofy laughs and fun detour moments with our favorite monster.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slideshow Controls -->
+          <button class="slide-arrow prev-btn" id="prev-slide" aria-label="Previous slide">‹</button>
+          <button class="slide-arrow next-btn" id="next-slide" aria-label="Next slide">›</button>
+
+          <!-- 15 Dot Indicators -->
+          <div class="slide-indicators" id="slide-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+            <span class="dot" data-index="6"></span>
+            <span class="dot" data-index="7"></span>
+            <span class="dot" data-index="8"></span>
+            <span class="dot" data-index="9"></span>
+            <span class="dot" data-index="10"></span>
+            <span class="dot" data-index="11"></span>
+            <span class="dot" data-index="12"></span>
+            <span class="dot" data-index="13"></span>
+            <span class="dot" data-index="14"></span>
           </div>
         </div>
 
-        <!-- Hero Details Pill: Friday, November 13, 2026 ONLY -->
+        <!-- Hero Details Pill: Friday, November 13, 2026 -->
         <div class="hero-details-pill">
           <div class="pill-item">
             <span class="pill-icon">📅</span>
             <div>
               <strong>Friday, November 13, 2026</strong>
-              <small>5:00 PM onwards</small>
+              <small>5:30 PM onwards</small>
             </div>
           </div>
           <div class="pill-divider"></div>
@@ -181,7 +365,7 @@
           <div class="event-card glass-card featured-event-card">
             <div class="event-icon" id="event-icon">🥂✨</div>
             <h3 class="event-name">The Grand Reception</h3>
-            <div class="event-date">Friday, November 13, 2026 • 5:00 PM onwards</div>
+            <div class="event-date">Friday, November 13, 2026 • 5:30 PM onwards</div>
             <div class="event-location">
               <strong>📍 North Park • San Jose, CA</strong>
               <p>An enchanting evening celebrating the new journey of Tarunima &amp; Subhayu with our beloved family and friends.</p>
@@ -193,186 +377,6 @@
               <a href="#rsvp" class="btn btn-outline">
                 💌 RSVP for Reception
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUR MOMENTS PHOTO GALLERY SECTION (15-Photo Symmetrical Grid) -->
-    <section class="gallery-section" id="gallery">
-      <div class="container">
-        <div class="text-center">
-          <span class="section-tag font-alt">Met through Subhayu's friend and Rini's cousin</span>
-          <h2 class="section-title">Snapshots of Tarunima &amp; Subhayu 📸✨</h2>
-          <p class="section-description">
-            From that first introduction to our favorite food runs and waterfront sunsets—a glimpse into our favorite memories together.
-          </p>
-        </div>
-
-        <div class="gallery-grid symmetrical-6-grid">
-          <!-- Photo 1: Lakeside Sunset -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_lakeside_sunset.jpg" alt="Lake Geneva Sunset" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌅 Lake Geneva Sunset</strong>
-              <small>Clear skies, golden hour, and our favorite lakeside strolls.</small>
-            </div>
-          </div>
-
-          <!-- Photo 2: Sunset Walk by the Water -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/moment_lakeside_sunset.jpg" alt="Sunset Walk by the Water" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌇 Sunset Walk by the Water</strong>
-              <small>Catching golden hour reflections and quiet evening chats.</small>
-            </div>
-          </div>
-
-          <!-- Photo 3: Half Moon Bay -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_half_moon_bay.jpg" alt="Half Moon Bay Coast" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🏖️ Half Moon Bay Coast</strong>
-              <small>Bundled up against chilly Pacific ocean winds and watching the tides.</small>
-            </div>
-          </div>
-
-          <!-- Photo 4: Ocean Coastline Selfie -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/moment_ocean_beach.jpg" alt="Ocean Coastline Breeze" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌊 Ocean Coastline Breeze</strong>
-              <small>Crisp seaside air and beachside memories along the coast.</small>
-            </div>
-          </div>
-
-          <!-- Photo 5: City Park (Met through Subhayu's friend and Rini's cousin) -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/moment_city_park.jpg" alt="Where It All Began" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌸 Where It All Began</strong>
-              <small>Met through Subhayu's friend and Rini's cousin!</small>
-            </div>
-          </div>
-
-          <!-- Photo 6: Hibachi -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/hero_food.jpg" alt="Hibachi Shows" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🍱 Hibachi Shows &amp; Fried Rice</strong>
-              <small>Bonding over sizzling grills, sushi rolls, and great laughs.</small>
-            </div>
-          </div>
-
-          <!-- Photo 7: Conveyor Belt Sushi -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_conveyor_sushi.jpg" alt="Conveyor Belt Sushi" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🍣 Conveyor Belt Sushi Nights</strong>
-              <small>Grabbing way too many plates from the belt and washing it down with Ramune.</small>
-            </div>
-          </div>
-
-          <!-- Photo 8: Dim Sum -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_dim_sum.jpg" alt="Dim Sum &amp; Dumpling Runs" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🥟 Dim Sum &amp; Dumpling Runs</strong>
-              <small>Steam baskets, soup dumplings, chow fun, and iced milk tea feasts.</small>
-            </div>
-          </div>
-
-          <!-- Photo 9: Giant Dosa -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_giant_dosa.jpg" alt="Giant Dosa Feasts" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🥞 Giant Dosa Feasts</strong>
-              <small>Meter-long crispy dosas with family—the bigger the feast, the better.</small>
-            </div>
-          </div>
-
-          <!-- Photo 10: Fine Dining -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_fine_dining.jpg" alt="Date Nights &amp; Cocktails" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🍸 Date Nights &amp; Cocktails</strong>
-              <small>Dressing up for delicious grilled skewers and celebrating little moments.</small>
-            </div>
-          </div>
-
-          <!-- Photo 11: Patio Brunch -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_patio_brunch.jpg" alt="Patio Brunch &amp; Blooms" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌸 Patio Brunch &amp; Blooms</strong>
-              <small>Outdoor coffee, fresh flowers, and long chats under the sun.</small>
-            </div>
-          </div>
-
-          <!-- Photo 12: Double Decker Bus -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_double_decker_bus.jpg" alt="Sightseeing on the Top Deck" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🚌 "Make A Wish" Sightseeing</strong>
-              <small>Catching the top-deck breeze and exploring fun road trip stops.</small>
-            </div>
-          </div>
-
-          <!-- Photo 13: Sightseeing Adventures -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/moment_travel_fun.jpg" alt="Sightseeing Road Trips" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🚍 Sightseeing Road Trips</strong>
-              <small>Sunny travel adventures and smiles from every stop along the way.</small>
-            </div>
-          </div>
-
-          <!-- Photo 14: Lake Vista -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/moment_lake_vista.jpg" alt="Sunny Lake Getaway" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>🌊 Sunny Lake Getaway</strong>
-              <small>Crisp blue skies and peaceful water vistas on our weekend trips.</small>
-            </div>
-          </div>
-
-          <!-- Photo 15: Sulley -->
-          <div class="gallery-card glass-card">
-            <div class="gallery-photo-frame">
-              <img src="./images/photo_monsters_inc.jpg" alt="Sulley Photobomb" class="gallery-photo" loading="lazy">
-            </div>
-            <div class="gallery-caption">
-              <strong>👾 Sulley Photobomb!</strong>
-              <small>Goofy laughs and fun detour moments with our favorite monster.</small>
             </div>
           </div>
         </div>

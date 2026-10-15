@@ -1,7 +1,7 @@
 import confetti from 'canvas-confetti';
 
-// Target Wedding Reception Date: Friday, November 13, 2026 5:00:00 PM PST
-const WEDDING_DATE = new Date('2026-11-13T17:00:00-08:00');
+// Target Wedding Reception Date: Friday, November 13, 2026 5:30:00 PM PST
+const WEDDING_DATE = new Date('2026-11-13T17:30:00-08:00');
 
 // Google Apps Script Web App URL for Google Sheets RSVP Integration
 // Paste your deployed Google Apps Script URL here to sync responses to Google Sheets
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendarHandlers();
   initFoodieForm();
   initRsvpForm();
+  initHeroSlideshow();
 });
 
 /* Navbar Mobile Toggle & Scroll Effect */
@@ -240,12 +241,145 @@ function initRsvpForm() {
   });
 }
 
-/* Confetti Helper with Warm Golden Floral Palette */
+/* Picture Slideshow with Dynamic Non-Predictable Transitions & Touch Swipe */
+let slideInterval = null;
+let currentSlideIndex = 0;
+const TRANSITIONS = [
+  'effect-zoom-soft',
+  'effect-drift-right',
+  'effect-glide-up',
+  'effect-drift-left',
+  'effect-breath-scale',
+  'effect-luminous-fade'
+];
+
+function initHeroSlideshow() {
+  const slides = document.querySelectorAll('.hero-slideshow-container .slide');
+  const dots = document.querySelectorAll('.slide-indicators .dot');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+  const slideshowEl = document.getElementById('hero-slideshow');
+
+  if (!slides.length) return;
+
+  function showSlide(index) {
+    if (index >= slides.length) currentSlideIndex = 0;
+    else if (index < 0) currentSlideIndex = slides.length - 1;
+    else currentSlideIndex = index;
+
+    // Pick a varied transition effect class for this slide
+    const chosenEffect = TRANSITIONS[currentSlideIndex % TRANSITIONS.length];
+
+    slides.forEach((slide, i) => {
+      // Remove all effect classes
+      TRANSITIONS.forEach(cls => slide.classList.remove(cls));
+
+      if (i === currentSlideIndex) {
+        slide.classList.add('active', chosenEffect);
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === currentSlideIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    slideInterval = setInterval(() => {
+      showSlide(currentSlideIndex + 1);
+    }, 7500);
+  }
+
+  function stopAutoplay() {
+    if (slideInterval) clearInterval(slideInterval);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSlide(currentSlideIndex - 1);
+      startAutoplay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSlide(currentSlideIndex + 1);
+      startAutoplay();
+    });
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const idx = parseInt(e.target.dataset.index, 10);
+      showSlide(idx);
+      startAutoplay();
+    });
+  });
+
+  if (slideshowEl) {
+    slideshowEl.addEventListener('mouseenter', stopAutoplay);
+    slideshowEl.addEventListener('mouseleave', startAutoplay);
+
+    // Touch Swipe Gesture Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slideshowEl.addEventListener('touchstart', (e) => {
+      stopAutoplay();
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slideshowEl.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoplay();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) {
+          // Swiped Left -> Next Slide
+          showSlide(currentSlideIndex + 1);
+        } else {
+          // Swiped Right -> Previous Slide
+          showSlide(currentSlideIndex - 1);
+        }
+      }
+    }
+  }
+
+  // Keyboard Arrow Navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      showSlide(currentSlideIndex - 1);
+      startAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      showSlide(currentSlideIndex + 1);
+      startAutoplay();
+    }
+  });
+
+  showSlide(0);
+  startAutoplay();
+}
+
+/* Confetti Helper with Warm Luxury Gold & Champagne Palette */
 function triggerConfetti(colors) {
   confetti({
     particleCount: 85,
     spread: 75,
     origin: { y: 0.65 },
-    colors: colors || ['#E07A5F', '#F4A261', '#D59B27', '#FDEEDC', '#81B29A']
+    colors: colors || ['#C5A059', '#B8860B', '#F3EFE6', '#E07A5F', '#D59B27']
   });
 }
+

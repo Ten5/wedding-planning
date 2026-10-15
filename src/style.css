@@ -2,7 +2,35 @@
    Tarunima & Subhayu - Wedding Reception Theme (Golden Hour & Floral Elegance)
    ========================================================================== */
 
-:root, [data-theme="v1"] {
+:root, [data-theme="v2"] {
+  --bg-main: #F7F7F8;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-card-hover: #FFFFFF;
+  --border-card: rgba(197, 160, 89, 0.3);
+  --border-card-hover: rgba(197, 160, 89, 0.6);
+
+  --accent-primary: #B8860B;
+  --accent-secondary: #C5A059;
+  --accent-gold: #B8860B;
+  --accent-badge-bg: #F3EFE6;
+
+  --text-main: #111827;
+  --text-muted: #4B5563;
+  --text-dim: #9CA3AF;
+
+  --font-serif: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-script: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+
+  --shadow-glow: 0 10px 30px rgba(197, 160, 89, 0.2);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.05);
+
+  --orb-1-bg: radial-gradient(circle, rgba(197, 160, 89, 0.3) 0%, transparent 70%);
+  --orb-2-bg: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
+  --orb-3-bg: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+}
+
+[data-theme="v1"] {
   --bg-main: #FAF5EF;
   --bg-card: rgba(255, 253, 249, 0.9);
   --bg-card-hover: rgba(255, 255, 255, 0.98);
@@ -584,6 +612,23 @@ body {
   object-fit: cover;
   border-radius: 18px;
   display: block;
+}
+
+/* Custom Focal Point Adjustments for Optimal Framing */
+.slide-img[src*="photo_monsters_inc"] {
+  object-position: center top;
+}
+.slide-img[src*="photo_lakeside_sunset"] {
+  object-position: center 20%;
+}
+.slide-img[src*="moment_city_park"] {
+  object-position: center 20%;
+}
+.slide-img[src*="photo_double_decker_bus"] {
+  object-position: center 15%;
+}
+.slide-img[src*="moment_ocean_beach"] {
+  object-position: center 25%;
 }
 
 .slide-caption-card {
