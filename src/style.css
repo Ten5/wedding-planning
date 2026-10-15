@@ -445,8 +445,11 @@ body {
 }
 
 .nickname-black strong,
-.nickname-black b {
+.nickname-black b,
+.nickname-black .dori-accent {
   font-weight: 700;
+  color: #991B1B;
+  -webkit-text-fill-color: #991B1B;
 }
 
 .couple-atomic-ampersand {
