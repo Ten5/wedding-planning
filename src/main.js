@@ -10,7 +10,6 @@ let GOOGLE_SHEET_WEB_APP_URL = "";
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCountdown();
-  initCalendarHandlers();
   initFoodieForm();
   initRsvpForm();
   initHeroSlideshow();
@@ -77,79 +76,6 @@ function initCountdown() {
   setInterval(update, 1000);
 }
 
-/* Calendar Event Data for Reception */
-const EVENT_DETAILS = {
-  reception: {
-    title: "Tarunima & Subhayu - Wedding Reception",
-    description: "Tarunima Mandal & Subhayu Chakravorty's Wedding Reception at North Park in San Jose, CA (5:00 PM onwards). We can't wait to celebrate with you!",
-    location: "North Park, San Jose, CA",
-    startDate: "20261113T170000",
-    endDate: "20261113T230000",
-    isoStart: "2026-11-13T17:00:00-08:00",
-    isoEnd: "2026-11-13T23:00:00-08:00"
-  }
-};
-
-function initCalendarHandlers() {
-  const gcalBtn = document.getElementById('btn-gcal');
-  const icalBtn = document.getElementById('btn-ical');
-
-  document.querySelectorAll('.cal-trigger-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      triggerConfetti();
-      downloadIcs(EVENT_DETAILS.reception);
-    });
-  });
-
-  if (gcalBtn) {
-    gcalBtn.addEventListener('click', () => {
-      triggerConfetti();
-      openGoogleCalendar(EVENT_DETAILS.reception);
-    });
-  }
-
-  if (icalBtn) {
-    icalBtn.addEventListener('click', () => {
-      triggerConfetti();
-      downloadIcs(EVENT_DETAILS.reception);
-    });
-  }
-}
-
-function openGoogleCalendar(ev) {
-  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
-    `&text=${encodeURIComponent(ev.title)}` +
-    `&dates=${ev.startDate}/${ev.endDate}` +
-    `&details=${encodeURIComponent(ev.description)}` +
-    `&location=${encodeURIComponent(ev.location)}`;
-  window.open(url, '_blank');
-}
-
-function downloadIcs(ev) {
-  const icsData = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Tarunima & Subhayu Wedding Reception//EN',
-    'CALSCALE:GREGORIAN',
-    'BEGIN:VEVENT',
-    `SUMMARY:${ev.title}`,
-    `DESCRIPTION:${ev.description}`,
-    `LOCATION:${ev.location}`,
-    `DTSTART:${ev.startDate}`,
-    `DTEND:${ev.endDate}`,
-    'STATUS:CONFIRMED',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].join('\r\n');
-
-  const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
-  const link = document.createElement('a');
-  link.href = window.URL.createObjectURL(blob);
-  link.setAttribute('download', `${ev.title.replace(/[^a-zA-Z0-9]/g, '_')}.ics`);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
 
 /* Foodie & Activity Suggestion Form */
 function initFoodieForm() {
