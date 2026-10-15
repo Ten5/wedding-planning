@@ -352,9 +352,19 @@ body {
   font-family: var(--font-serif);
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.6rem;
   line-height: 1.25;
+}
+
+.title-emoji {
+  -webkit-text-fill-color: initial;
+  color: initial;
+  background: none;
+  display: inline-block;
 }
 
 .section-description {
@@ -367,7 +377,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  padding: 3rem 1.25rem 4rem 1.25rem;
+  padding: 3.5rem 1.25rem 2.5rem 1.25rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -1120,18 +1130,15 @@ body {
   text-decoration: underline;
 }
 
-/* Section Margins & Spacing */
-.countdown-section {
+/* ==========================================================================
+   UNIFORM & CONSISTENT SECTION SPACING (Identical 5rem Inter-Section Gap)
+   ========================================================================== */
+.countdown-section,
+.events-section,
+.action-section,
+.foodie-section,
+.travel-section {
   padding: 2.5rem 1.25rem;
-}
-
-.events-section {
-  padding: 4rem 1.25rem 2.5rem 1.25rem;
-}
-
-/* Action Section: Live Stream & RSVP Side-by-Side Grid */
-.action-section {
-  padding: 3rem 1.25rem 4rem 1.25rem;
 }
 
 .two-col-action-grid {
@@ -1198,7 +1205,10 @@ body {
 .stream-title {
   font-family: var(--font-serif);
   font-size: 1.35rem;
-  color: var(--text-main);
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.4rem;
 }
 
@@ -1208,18 +1218,6 @@ body {
   max-width: 480px;
   margin: 0 auto;
   line-height: 1.55;
-}
-
-.foodie-section {
-  padding: 3.5rem 1.25rem 1.5rem 1.25rem;
-}
-
-.travel-section {
-  padding: 1.5rem 1.25rem 4rem 1.25rem;
-}
-
-.rsvp-section {
-  padding: 4rem 1.25rem 5rem 1.25rem;
 }
 
 /* Countdown Section */
@@ -1293,8 +1291,12 @@ body {
 
 .event-name {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--text-main);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.3rem;
 }
 
@@ -1509,7 +1511,10 @@ body {
 .foodie-recommend-box h3 {
   font-family: var(--font-serif);
   font-size: 1.8rem;
-  color: var(--text-main);
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.4rem;
 }
 
@@ -1573,7 +1578,10 @@ body {
 .travel-card h3 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--text-main);
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.8rem;
 }
 
