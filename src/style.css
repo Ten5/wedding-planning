@@ -689,6 +689,15 @@ body {
 .slide-img[src*="moment_ocean_beach"] {
   object-position: center 25%;
 }
+.slide-img[src*="photo_chicago_bean"] {
+  object-position: center 70%;
+}
+.slide-img[src*="photo_movie_date"] {
+  object-position: center 35%;
+}
+.slide-img[src*="photo_lake_cruise"] {
+  object-position: center 20%;
+}
 
 .slide-caption-card {
   background: var(--bg-card);
