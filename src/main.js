@@ -4,8 +4,7 @@ import confetti from 'canvas-confetti';
 const WEDDING_DATE = new Date('2026-11-13T17:30:00-08:00');
 
 // Google Apps Script Web App URL for Google Sheets RSVP Integration
-// Paste your deployed Google Apps Script URL here to sync responses to Google Sheets
-let GOOGLE_SHEET_WEB_APP_URL = "";
+let GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx9OAGxd_sK90gR8W-rf4D1hb1YVFZY2xzYw57WcgrN3TFEtaXZ9MQJl36-XGpr3L59JA/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
@@ -131,7 +130,7 @@ function initRsvpForm() {
     e.preventDefault();
     const fullName = document.getElementById('rsvp-full-name').value.trim();
     const email = document.getElementById('rsvp-email').value.trim();
-    const attendance = document.getElementById('rsvp-attendance').value;
+    const guests = document.getElementById('rsvp-guests') ? document.getElementById('rsvp-guests').value : '1';
     const notes = document.getElementById('rsvp-notes').value.trim();
 
     if (!fullName || !email) return;
@@ -140,7 +139,8 @@ function initRsvpForm() {
       formType: 'rsvp',
       fullName: fullName,
       email: email,
-      attendance: attendance,
+      guests: guests,
+      attendance: 'yes',
       notes: notes,
       timestamp: new Date().toLocaleString()
     };
@@ -162,7 +162,8 @@ function initRsvpForm() {
 
     triggerConfetti();
     feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you ${fullName}! Your RSVP details have been received. We can't wait to celebrate with you! 💌✨`;
+    const guestLabel = parseInt(guests, 10) > 1 ? ` (Party of ${guests})` : '';
+    feedback.textContent = `Thank you ${fullName}${guestLabel}! Your RSVP has been confirmed. We can't wait to celebrate together! 💌✨`;
     form.reset();
   });
 }
