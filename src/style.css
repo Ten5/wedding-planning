@@ -429,45 +429,25 @@ body {
   width: 100%;
 }
 
-.couple-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: start;
-  gap: 1.6rem;
+.couple-names-header {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5.2vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 auto 0.6rem auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(0.4rem, 1.8vw, 1rem);
   text-align: center;
 }
 
-@media (max-width: 640px) {
-  .couple-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-}
-
-.couple-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.hero-name-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 0.5rem 0;
+.person-name-group {
   display: inline-flex;
   align-items: baseline;
-  justify-content: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   white-space: nowrap;
-}
-
-@media (max-width: 440px) {
-  .hero-name-heading {
-    white-space: normal;
-  }
 }
 
 .name-gold {
@@ -489,31 +469,32 @@ body {
   display: inline-block;
 }
 
-.couple-ampersand-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0.2rem;
-}
-
 .hero-ampersand {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
   color: var(--accent-secondary);
-  line-height: 1.15;
+  line-height: 1;
+  margin: 0 0.2rem;
 }
 
-@media (max-width: 640px) {
-  .couple-ampersand-col {
-    padding: 0;
-  }
-  .hero-ampersand {
-    font-size: 2rem;
+.parents-lineage-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 3.5vw, 2.5rem);
+  max-width: 780px;
+  margin: 0.4rem auto 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 580px) {
+  .parents-lineage-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
 
-.parents-subtext {
+.parent-col {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -523,15 +504,15 @@ body {
 .parent-rel {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
   color: var(--text-dim);
   line-height: 1.2;
 }
 
 .parent-names {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.8vw, 1.3rem);
-  font-weight: 400; /* Clean, refined regular weight - not bold */
+  font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+  font-weight: 400;
   color: var(--text-main);
   letter-spacing: 0.01em;
   line-height: 1.35;
@@ -546,48 +527,6 @@ body {
   line-height: 1.6;
 }
 
-/* V2 Single Hero Photo Frame */
-.couple-photo-wrapper {
-  margin: 0 auto 2rem auto;
-  max-width: 560px;
-}
-
-.photo-frame {
-  position: relative;
-  border-radius: 26px;
-  padding: 10px;
-  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 50%, var(--border-card) 100%);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.photo-frame:hover {
-  transform: scale(1.015);
-}
-
-.couple-photo {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
-}
-
-.photo-caption-badge {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #FFF;
-  border: 1px solid var(--border-card);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  padding: 0.45rem 1.3rem;
-  border-radius: 50px;
-  color: var(--text-main);
-  font-size: 0.88rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
 
 /* ==========================================================================
    V1 HERO PICTURE SLIDESHOW STYLES
@@ -607,14 +546,13 @@ body {
 .hero-slideshow-container {
   position: relative;
   max-width: 440px; /* 5x7 Mobile-first vertical format */
-  margin: 0 auto 3.5rem auto; /* Generous gap before pill */
+  margin: 0 auto 2.5rem auto;
   width: 100%;
 }
 
 .slideshow-track {
   position: relative;
   width: 100%;
-  min-height: calc((min(100vw - 2.5rem, 440px) * 7 / 5) + 125px);
 }
 
 .slide {
@@ -625,7 +563,7 @@ body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
   z-index: 1;
 }
 
@@ -633,6 +571,7 @@ body {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  position: relative;
   z-index: 2;
 }
 
@@ -771,15 +710,15 @@ body {
 /* Slideshow Navigation Arrows */
 .slide-arrow {
   position: absolute;
-  top: 42%;
+  top: 36%;
   transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
+  width: clamp(36px, 9vw, 44px);
+  height: clamp(36px, 9vw, 44px);
   border-radius: 50%;
   background: rgba(255, 253, 249, 0.92);
   border: 1px solid var(--border-card);
   color: var(--accent-primary);
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
   font-weight: 300;
   display: flex;
   align-items: center;
@@ -792,20 +731,11 @@ body {
 }
 
 .prev-btn {
-  left: -14px;
+  left: clamp(4px, 1.5vw, -14px);
 }
 
 .next-btn {
-  right: -14px;
-}
-
-@media (max-width: 480px) {
-  .prev-btn {
-    left: 6px;
-  }
-  .next-btn {
-    right: 6px;
-  }
+  right: clamp(4px, 1.5vw, -14px);
 }
 
 .slide-arrow:hover {
@@ -1224,18 +1154,22 @@ body {
 .countdown-grid {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
+  gap: clamp(0.4rem, 2vw, 1.2rem);
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 520px;
+  margin: 1.5rem auto 0 auto;
 }
 
 .time-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   backdrop-filter: blur(16px);
-  border-radius: 20px;
-  width: 125px;
-  padding: 1.2rem 0.8rem;
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: clamp(12px, 3vw, 20px);
+  flex: 1 1 0;
+  min-width: 0;
+  padding: clamp(0.75rem, 2vw, 1.2rem) clamp(0.2rem, 1.5vw, 0.8rem);
   text-align: center;
   box-shadow: var(--shadow-card);
 }
@@ -1243,7 +1177,7 @@ body {
 .time-val {
   display: block;
   font-family: var(--font-serif);
-  font-size: 2.8rem;
+  font-size: clamp(1.8rem, 5.5vw, 2.8rem);
   font-weight: 700;
   color: var(--accent-primary);
   line-height: 1;
@@ -1251,9 +1185,9 @@ body {
 }
 
 .time-label {
-  font-size: 0.78rem;
+  font-size: clamp(0.62rem, 1.8vw, 0.78rem);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -1326,137 +1260,6 @@ body {
   color: var(--text-muted);
   font-size: 0.85rem;
   line-height: 1.45;
-}
-
-/* Photo Gallery Section (Symmetrical 3x2 Grid) */
-.symmetrical-6-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.gallery-card {
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.gallery-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.09);
-}
-
-.gallery-photo-frame {
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 0.8rem;
-}
-
-.gallery-photo {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.gallery-card:hover .gallery-photo {
-  transform: scale(1.04);
-}
-
-.gallery-caption strong {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--text-main);
-  margin-bottom: 0.2rem;
-}
-
-.gallery-caption small {
-  display: block;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.foodie-pill {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-  background: var(--accent-badge-bg);
-  padding: 0.12rem 0.45rem;
-  border-radius: 10px;
-  margin-bottom: 0.25rem;
-}
-
-/* Add to Calendar Symmetrical Grid */
-.calendar-hero-card {
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.card-sparkle {
-  font-size: 2.2rem;
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.calendar-hero-card h2 {
-  font-family: var(--font-serif);
-  font-size: 2.1rem;
-  margin-bottom: 0.6rem;
-  color: var(--text-main);
-}
-
-.calendar-hero-card p {
-  color: var(--text-muted);
-  margin-bottom: 1.6rem;
-}
-
-.symmetrical-cal-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  max-width: 620px;
-  margin: 0 auto;
-}
-
-.cal-btn-symmetrical {
-  background: #FFF;
-  border: 1px solid var(--border-card);
-  border-radius: 18px;
-  padding: 1.2rem 1rem;
-  color: var(--text-main);
-  font-family: var(--font-sans);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  text-align: left;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-.cal-btn-symmetrical:hover {
-  background: var(--accent-badge-bg);
-  border-color: var(--accent-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-}
-
-.cal-text-wrap strong {
-  display: block;
-  font-size: 1rem;
-  color: var(--text-main);
-}
-
-.cal-text-wrap small {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
-.cal-icon {
-  font-size: 2rem;
 }
 
 /* Interests Section */
@@ -1688,126 +1491,11 @@ select.form-input option {
 }
 
 /* ==========================================================================
-   FLUID MOBILE SCREEN RESPONSIVENESS
+   FLUID MOBILE SCREEN RESPONSIVENESS (Zero Hardcoded Pixel Overrides)
    ========================================================================== */
 
-@media (max-width: 900px) {
-  .symmetrical-6-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .switcher-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .switcher-options {
-    justify-content: center;
-  }
-
-  .navbar {
-    padding: 0.8rem 0;
-  }
-  .hero-section {
-    padding: 2.2rem 1rem 3rem 1rem;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
-  .couple-names {
-    font-size: clamp(1.8rem, 6.5vw, 2.5rem);
-  }
-  .hero-subtitle {
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .couple-photo-wrapper {
-    margin-bottom: 1.6rem;
-  }
-  .couple-photo {
-    height: 290px;
-  }
-  .photo-caption-badge {
-    font-size: 0.8rem;
-    padding: 0.35rem 1rem;
-    bottom: -12px;
-  }
-
-  .slideshow-track {
-    min-height: 430px;
-  }
-  .slide-img {
-    height: 290px;
-  }
-  .slide-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 1.6rem;
-    top: 150px;
-  }
-  .prev-btn { left: -10px; }
-  .next-btn { right: -10px; }
-
-  .glass-card {
-    padding: 1.5rem 1.2rem;
-    border-radius: 18px;
-  }
-
-  .parents-line-card {
-    width: 100%;
-    max-width: 95%;
-    padding: 0.85rem 1.1rem;
-    margin-bottom: 1.4rem;
-  }
-  .parent-entry {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .featured-event-card {
-    padding: 2rem 1.4rem;
-  }
-  .featured-event-card .event-actions {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .featured-event-card .event-actions .btn {
-    width: 100%;
-  }
-
-  .hero-details-pill {
-    flex-direction: column;
-    border-radius: 20px;
-    gap: 0.8rem;
-    padding: 1rem 1.4rem;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-  .pill-item {
-    justify-content: center;
-  }
-  .pill-divider {
-    width: 80%;
-    height: 1px;
-  }
-
-  .symmetrical-cal-grid {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-  .cal-btn-symmetrical {
-    padding: 1rem;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
+/* Tablet & Mobile Nav Toggle */
+@media (max-width: 860px) {
   .nav-links {
     display: none;
   }
@@ -1822,93 +1510,117 @@ select.form-input option {
     width: 100%;
     background: var(--bg-main);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
     padding: 1.2rem;
     gap: 1rem;
     border-bottom: 1px solid var(--border-card);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   }
-
-  /* Compact section padding for mobile */
-  .countdown-section { padding: 2rem 1rem; }
-  .events-section { padding: 3rem 1rem; }
-  .gallery-section { padding: 3rem 1rem; }
-  .calendar-section { padding: 2.2rem 1rem; }
-  .foodie-section { padding: 3rem 1rem; }
-  .travel-section { padding: 3rem 1rem; }
-  .rsvp-section { padding: 3rem 1rem 4rem 1rem; }
 }
 
+/* Mobile Layouts (<768px) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 0;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem 2.2rem 1rem;
+  }
+
+  /* Consistent, identical section spacing across the entire page */
+  .countdown-section,
+  .events-section,
+  .action-section,
+  .foodie-section,
+  .travel-section {
+    padding: 2rem 1rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem 1.1rem;
+    border-radius: 18px;
+  }
+
+  .featured-event-card {
+    padding: 1.8rem 1.2rem;
+  }
+  .featured-event-card .event-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .featured-event-card .event-actions .btn {
+    width: 100%;
+  }
+
+  .livestream-card,
+  .two-col-action-grid .rsvp-card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 20px;
+  }
+
+  .stream-placeholder-box {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .hero-details-pill {
+    flex-direction: column;
+    border-radius: 20px;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pill-item {
+    justify-content: center;
+  }
+  .pill-divider {
+    width: 80%;
+    height: 1px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .suggestion-form .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .suggestion-form .form-input,
+  .suggestion-form .btn {
+    width: 100%;
+  }
+}
+
+/* Small Handheld Screens (<480px) */
 @media (max-width: 480px) {
   .hero-emblem-img {
     width: 72px;
     height: 72px;
   }
-  .section-tag {
-    font-size: 1.7rem;
+
+  .glass-card {
+    padding: 1.25rem 0.95rem;
+    border-radius: 16px;
   }
-  .section-title {
-    font-size: 1.75rem;
-  }
-  .section-description {
-    font-size: 0.95rem;
-    margin-bottom: 1.4rem;
-  }
-  .couple-photo {
-    height: 250px;
-  }
-  .parents-line-card {
-    padding: 1.1rem 1.2rem;
-    gap: 0.9rem;
-    width: 100%;
-  }
-  .parent-person {
-    font-size: 1.15rem;
-  }
-  .parent-nickname {
-    font-size: 1.25rem;
-  }
-  .parent-rel {
-    font-size: 0.9rem;
-  }
-  .parent-names {
+
+  .btn {
+    padding: 0.85rem 1.2rem;
     font-size: 0.95rem;
   }
 
-  .time-card {
-    width: 75px;
-    padding: 0.8rem 0.4rem;
-    border-radius: 14px;
-  }
-  .time-val {
-    font-size: 2rem;
-  }
-  .time-label {
-    font-size: 0.68rem;
-  }
-  .symmetrical-6-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-  .gallery-photo {
-    height: 155px;
-  }
-  .gallery-card {
-    padding: 0.6rem;
-    border-radius: 14px;
-  }
-  .gallery-caption strong {
-    font-size: 0.92rem;
-  }
-  .gallery-caption small {
-    font-size: 0.76rem;
-  }
-  .btn {
-    padding: 0.75rem 1.4rem;
-    font-size: 0.92rem;
-  }
-  .btn-large {
-    padding: 0.9rem;
-    font-size: 1rem;
+  .interests-grid,
+  .travel-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
