@@ -989,7 +989,7 @@ body {
 }
 
 .livestream-card {
-  padding: 2.6rem 2.2rem;
+  padding: 2.2rem 2rem;
   border-radius: 26px;
   text-align: center;
 }
@@ -1006,22 +1006,22 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .stream-placeholder-box {
   background: rgba(255, 255, 255, 0.65);
   border: 1.5px dashed var(--border-card);
   border-radius: 20px;
-  padding: 2.2rem 1.6rem;
-  margin-top: 1.6rem;
+  padding: 1.6rem 1.4rem;
+  margin-top: 1.4rem;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
 .stream-icon {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   display: block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .stream-title {
@@ -1031,15 +1031,7 @@ body {
   background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.4rem;
-}
-
-.stream-subtext {
-  font-size: 0.94rem;
-  color: var(--text-muted);
-  max-width: 480px;
-  margin: 0 auto;
-  line-height: 1.55;
+  margin-bottom: 0;
 }
 
 /* Countdown Section */
@@ -1542,8 +1534,9 @@ select.form-input option {
   }
 
   .stream-placeholder-box {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem;
     border-radius: 16px;
+    margin-top: 1.2rem;
   }
 
   .form-grid {
