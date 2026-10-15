@@ -433,6 +433,18 @@ body {
   margin: 0 0.4rem;
 }
 
+.hero-nickname {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.65em;
+  color: var(--accent-gold);
+  margin-left: 0.2rem;
+  letter-spacing: normal;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 .hero-subtitle {
   font-size: 1.15rem;
   color: var(--text-muted);
@@ -859,6 +871,58 @@ body {
   text-transform: uppercase;
 }
 
+/* Lightbox Navigation Arrows */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(30, 26, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFF;
+  font-size: 2.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  user-select: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox-prev {
+  left: -25px;
+}
+
+.lightbox-next {
+  right: -25px;
+}
+
+@media (max-width: 600px) {
+  .lightbox-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 1.8rem;
+  }
+  .lightbox-prev {
+    left: 8px;
+  }
+  .lightbox-next {
+    right: 8px;
+  }
+}
+
+.lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: #FFF;
+  transform: translateY(-50%) scale(1.1);
+}
+
 /* Dot Indicators */
 .slide-indicators {
   display: flex;
@@ -883,30 +947,30 @@ body {
   border-radius: 12px;
 }
 
-/* Parents Announcement Card */
+/* Parents Lineage Subtext Card */
 .parents-line-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 0.8rem;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 24px;
-  padding: 1.4rem 2.2rem;
-  margin: 1.2rem auto 2.2rem auto;
-  max-width: 720px;
+  border-radius: 20px;
+  padding: 1.1rem 1.8rem;
+  margin: 0.8rem auto 1.6rem auto;
+  max-width: 680px;
   box-shadow: var(--shadow-card);
   text-align: center;
 }
 
-@media (min-width: 680px) {
+@media (min-width: 640px) {
   .parents-line-card {
     flex-direction: row;
     align-items: center;
-    gap: 2.2rem;
+    gap: 1.6rem;
   }
 }
 
@@ -914,30 +978,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
-.person-title-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.45rem;
-}
-
-.parent-person {
+.parent-separator {
   font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 1.45rem;
-  color: var(--accent-primary);
-  letter-spacing: 0.02em;
-}
-
-.parent-nickname {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--accent-gold);
-  margin-left: 0.35rem;
+  line-height: 1;
+}
+
+@media (max-width: 639px) {
+  .parent-separator {
+    display: none;
+  }
 }
 
 .parent-rel {
@@ -945,25 +999,15 @@ body {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--text-dim);
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .parent-names {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.28rem;
   font-weight: 400; /* Clean, refined regular weight - not bold */
   color: var(--text-main);
   letter-spacing: 0.01em;
-  margin-top: 0.2rem;
-}
-
-.parent-divider {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.35rem;
-  color: var(--accent-gold);
-  align-self: center;
-  margin: 0.2rem 0;
 }
 
 /* Single Event Featured Card for Reception */
@@ -1031,9 +1075,28 @@ body {
 
 .hero-cta-group {
   display: flex;
-  gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+#hero-rsvp-btn {
+  max-width: 440px;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+}
+
+/* Clickable Map Location Links */
+.location-map-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+
+.location-map-link:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
 }
 
 /* Section Margins & Spacing */
@@ -1045,14 +1108,37 @@ body {
   padding: 4rem 1.25rem 2.5rem 1.25rem;
 }
 
-/* Live Stream Section */
-.livestream-section {
-  padding: 2.5rem 1.25rem 4rem 1.25rem;
+/* Action Section: Live Stream & RSVP Side-by-Side Grid */
+.action-section {
+  padding: 3rem 1.25rem 4rem 1.25rem;
+}
+
+.two-col-action-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 880px) {
+  .two-col-action-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.two-col-action-grid .livestream-card,
+.two-col-action-grid .rsvp-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
+  max-width: none;
 }
 
 .livestream-card {
-  max-width: 680px;
-  margin: 0 auto;
   padding: 2.6rem 2.2rem;
   border-radius: 26px;
   text-align: center;
@@ -1061,6 +1147,7 @@ body {
 .livestream-badge {
   display: inline-flex;
   align-items: center;
+  align-self: center;
   background: rgba(220, 38, 38, 0.08);
   color: #DC2626;
   border: 1px solid rgba(220, 38, 38, 0.22);

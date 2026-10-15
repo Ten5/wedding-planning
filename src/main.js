@@ -290,9 +290,12 @@ function initHeroSlideshow() {
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxClose = document.getElementById('lightbox-close');
   let isLightboxOpen = false;
 
-  function openLightbox() {
+  function updateLightboxContent() {
     const activeSlide = slides[currentSlideIndex];
     if (!activeSlide || !lightbox) return;
 
@@ -310,6 +313,11 @@ function initHeroSlideshow() {
     if (descEl && lightboxDesc) {
       lightboxDesc.textContent = descEl.textContent;
     }
+  }
+
+  function openLightbox() {
+    updateLightboxContent();
+    if (!lightbox) return;
 
     lightbox.classList.add('active');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -323,6 +331,36 @@ function initHeroSlideshow() {
     lightbox.setAttribute('aria-hidden', 'true');
     isLightboxOpen = false;
     startAutoplay();
+  }
+
+  function navigateLightbox(direction) {
+    let nextIdx = currentSlideIndex + direction;
+    if (nextIdx >= slides.length) nextIdx = 0;
+    else if (nextIdx < 0) nextIdx = slides.length - 1;
+    showSlide(nextIdx);
+    updateLightboxContent();
+  }
+
+  // Lightbox Arrow Controls
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigateLightbox(-1);
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigateLightbox(1);
+    });
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
   }
 
   // Open modal on tapping/clicking the photo frame or caption card
@@ -343,18 +381,53 @@ function initHeroSlideshow() {
     }
   });
 
-  // Close modal on tapping anywhere on lightbox (backdrop, content, image, or close button)
+  // Close modal on tapping backdrop or outside controls
   if (lightbox) {
-    lightbox.addEventListener('click', () => {
-      closeLightbox();
-    });
+    const backdrop = lightbox.querySelector('.lightbox-backdrop');
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+      });
+    }
+
+    const imgWrap = lightbox.querySelector('.lightbox-img-wrap');
+    if (imgWrap) {
+      imgWrap.addEventListener('click', () => {
+        closeLightbox();
+      });
+    }
+
+    // Touch swipe gesture support for Lightbox
+    let lbTouchStartX = 0;
+    let lbTouchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+      lbTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      lbTouchEndX = e.changedTouches[0].screenX;
+      const diff = lbTouchEndX - lbTouchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) {
+          navigateLightbox(1); // Swiped Left -> Next Photo
+        } else {
+          navigateLightbox(-1); // Swiped Right -> Previous Photo
+        }
+      }
+    }, { passive: true });
   }
 
-  // Keyboard Navigation: Arrow keys for slides, Escape to close lightbox
+  // Keyboard Navigation: Arrow keys for slides/lightbox, Escape to close lightbox
   document.addEventListener('keydown', (e) => {
     if (isLightboxOpen) {
       if (e.key === 'Escape') {
         closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(1);
       }
       return;
     }
