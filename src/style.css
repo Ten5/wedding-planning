@@ -544,7 +544,7 @@ body {
 .hero-slideshow-container {
   position: relative;
   max-width: 440px; /* 5x7 Mobile-first vertical format */
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -918,8 +918,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 0.55rem;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
 }
 
 .dot {
@@ -1500,7 +1500,7 @@ select.form-input option {
   }
 
   .hero-section {
-    padding: 2rem 1rem 2.2rem 1rem;
+    padding: 2rem 1rem;
   }
 
   /* Consistent, identical section spacing across the entire page */
