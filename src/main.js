@@ -285,8 +285,80 @@ function initHeroSlideshow() {
     }
   }
 
-  // Keyboard Arrow Navigation
+  // Fullscreen Lightbox Modal for Uncropped Photo View
+  const lightbox = document.getElementById('slideshow-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  let isLightboxOpen = false;
+
+  function openLightbox() {
+    const activeSlide = slides[currentSlideIndex];
+    if (!activeSlide || !lightbox) return;
+
+    const imgEl = activeSlide.querySelector('.slide-img');
+    const titleEl = activeSlide.querySelector('.slide-title');
+    const descEl = activeSlide.querySelector('.slide-desc');
+
+    if (imgEl && lightboxImg) {
+      lightboxImg.src = imgEl.src;
+      lightboxImg.alt = imgEl.alt || '';
+    }
+    if (titleEl && lightboxTitle) {
+      lightboxTitle.textContent = titleEl.textContent;
+    }
+    if (descEl && lightboxDesc) {
+      lightboxDesc.textContent = descEl.textContent;
+    }
+
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    isLightboxOpen = true;
+    stopAutoplay();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    isLightboxOpen = false;
+    startAutoplay();
+  }
+
+  // Open modal on tapping/clicking the photo frame or caption card
+  slides.forEach(slide => {
+    const frame = slide.querySelector('.slide-photo-frame');
+    const caption = slide.querySelector('.slide-caption-card');
+    if (frame) {
+      frame.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox();
+      });
+    }
+    if (caption) {
+      caption.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox();
+      });
+    }
+  });
+
+  // Close modal on tapping anywhere on lightbox (backdrop, content, image, or close button)
+  if (lightbox) {
+    lightbox.addEventListener('click', () => {
+      closeLightbox();
+    });
+  }
+
+  // Keyboard Navigation: Arrow keys for slides, Escape to close lightbox
   document.addEventListener('keydown', (e) => {
+    if (isLightboxOpen) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+      return;
+    }
+
     if (e.key === 'ArrowLeft') {
       showSlide(currentSlideIndex - 1);
       startAutoplay();
