@@ -444,6 +444,11 @@ body {
   display: inline-block;
 }
 
+.nickname-black strong,
+.nickname-black b {
+  font-weight: 700;
+}
+
 .couple-atomic-ampersand {
   display: flex;
   align-items: center;
