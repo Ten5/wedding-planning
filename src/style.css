@@ -690,7 +690,10 @@ body {
   object-position: center 25%;
 }
 .slide-img[src*="photo_dim_sum"] {
-  object-position: 60% 40%;
+  object-position: 62% 40%;
+}
+.slide-img[src*="photo_giant_dosa"] {
+  object-position: 47% 40%;
 }
 .slide-img[src*="photo_chicago_bean"] {
   object-position: center 70%;
