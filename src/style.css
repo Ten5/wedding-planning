@@ -345,7 +345,7 @@ body {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: 2.4rem;
+  font-size: clamp(1.9rem, 5vw, 2.4rem);
   font-weight: 700;
   color: #B8860B;
   background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
