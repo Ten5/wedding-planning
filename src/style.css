@@ -670,6 +670,40 @@ body {
   display: block;
 }
 
+/* Smart-Fit Ambient Blurred Backdrop for Wide Landscape Photos */
+.slide-photo-frame.smart-fit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #141110;
+}
+
+.slide-photo-frame.smart-fit .slide-img-blur {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.68) saturate(1.2);
+  transform: scale(1.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slide-photo-frame.smart-fit .slide-img {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: calc(100% - 12px);
+  height: auto;
+  max-height: calc(100% - 12px);
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.42);
+  z-index: 2;
+}
+
 /* Custom Focal Point Adjustments for Optimal Framing */
 .slide-img[src*="photo_monsters_inc"] {
   object-position: center top;
