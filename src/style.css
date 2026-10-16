@@ -1035,6 +1035,7 @@ body {
 .countdown-section,
 .events-section,
 .action-section,
+.family-section,
 .foodie-section,
 .travel-section {
   padding: 2.5rem 1.25rem;
@@ -1089,6 +1090,87 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0;
+}
+
+/* ==========================================================================
+   OUR FAMILIES SECTION
+   ========================================================================== */
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  max-width: 1020px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.family-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 24px;
+  text-align: center;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.family-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 6px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 50%, var(--border-card) 100%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.family-card:hover .family-photo-frame {
+  transform: scale(1.015);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
+}
+
+.family-img {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.family-img-subhayu {
+  object-position: center 75%;
+}
+
+.family-img-tarunima {
+  object-position: center center;
+}
+
+.family-caption {
+  padding: 0.2rem 0.5rem 0.1rem 0.5rem;
+}
+
+.family-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #B8860B;
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.35rem;
+}
+
+.family-card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* Countdown Section */
@@ -1564,9 +1646,33 @@ select.form-input option {
   .countdown-section,
   .events-section,
   .action-section,
+  .family-section,
   .foodie-section,
   .travel-section {
     padding: 2rem 1rem;
+  }
+
+  .family-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .family-card {
+    padding: 1.2rem 1rem;
+    border-radius: 20px;
+  }
+
+  .family-photo-frame {
+    margin-bottom: 1rem;
+    border-radius: 16px;
+  }
+
+  .family-img {
+    border-radius: 11px;
+  }
+
+  .family-card-title {
+    font-size: 1.4rem;
   }
 
   .glass-card {
@@ -1624,6 +1730,7 @@ select.form-input option {
     font-size: 0.95rem;
   }
 
+  .family-grid,
   .interests-grid,
   .travel-grid {
     grid-template-columns: 1fr;

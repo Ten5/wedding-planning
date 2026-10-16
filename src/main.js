@@ -418,6 +418,34 @@ function initHeroSlideshow() {
     }
   });
 
+  // Also allow tapping Family Section cards to view full family portraits in lightbox
+  const familyCards = document.querySelectorAll('.family-card');
+  familyCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const imgEl = card.querySelector('.family-img');
+      const titleEl = card.querySelector('.family-card-title');
+      const descEl = card.querySelector('.family-card-desc');
+      if (!lightbox || !imgEl) return;
+
+      if (lightboxImg) {
+        lightboxImg.src = imgEl.src;
+        lightboxImg.alt = imgEl.alt || '';
+      }
+      if (titleEl && lightboxTitle) {
+        lightboxTitle.textContent = titleEl.textContent;
+      }
+      if (descEl && lightboxDesc) {
+        lightboxDesc.textContent = descEl.textContent;
+      }
+
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      isLightboxOpen = true;
+      stopAutoplay();
+    });
+  });
+
   // Close modal on tapping backdrop or outside controls
   if (lightbox) {
     const backdrop = lightbox.querySelector('.lightbox-backdrop');
