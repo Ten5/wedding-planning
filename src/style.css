@@ -1092,6 +1092,14 @@ body {
   margin-bottom: 0;
 }
 
+.stream-links-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.15rem;
+}
+
 /* ==========================================================================
    OUR FAMILIES SECTION
    ========================================================================== */
@@ -1700,6 +1708,15 @@ select.form-input option {
     padding: 1.25rem 1rem;
     border-radius: 16px;
     margin-top: 1.2rem;
+  }
+
+  .stream-links-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .stream-links-group .stream-link-btn {
+    width: 100%;
   }
 
   .form-grid {
